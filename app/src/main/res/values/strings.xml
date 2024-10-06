@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">LoginByFirebase</string>
+    <string name="enter_phone_number_here">Enter phone number here</string>
+    <string name="enter_otp_code">Enter OTP Code</string>
+    <string name="send_otp_code">Send OTP Code</string>
+    <string name="i_didn_t_receive_otp_code">I didn\'t receive OTP code</string>
+    <string name="murkoff_corporation">MURKOFF CORPORATION</string>
+    <string name="login_with_phone_number">Login with phone number</string>
+    <string name="vietnam_phone_prefix">+84</string>
+    <string name="get_authorization_code">Get Authorization Code</string>
+</resources>

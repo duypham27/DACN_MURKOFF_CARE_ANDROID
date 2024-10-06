@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "225389954167",
+    "project_id": "dacn-murkoff-android",
+    "storage_bucket": "dacn-murkoff-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225389954167:android:57c63c9291fae0dd58b272",
+        "android_client_info": {
+          "package_name": "com.example.dacn_murkoff_android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcTmIhYFyrBBtbO-8sOznhw26gC3bbd_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

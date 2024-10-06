@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical"
+    android:background="@drawable/loginbackground"
+    tools:context=".LoginPage.LoginActivity">
+
+    <!--MURKOFF LOGO-->
+    <ImageView
+        android:id="@+id/muroff_logo"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/murkoff_logo"
+        android:layout_gravity="center"/>
+
+
+    <!--MURKOFF SLOGAN-->
+    <LinearLayout
+        android:id="@+id/murkoff_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="5dp"
+            android:text="@string/murkoff_corporation"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your World, Our Business"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            tools:ignore="RtlSymmetry" />
+
+    </LinearLayout>
+
+
+    <!-- LOGIN WITH PHONE NUMBER -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/login_with_phone_number"
+        android:textColor="@color/white"
+        android:textSize="12sp"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="@string/vietnam_phone_prefix"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/editPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:layout_marginHorizontal="20dp"
+            android:hint="@string/enter_phone_number_here"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp"/>
+
+    <!-- BUTTON Get Authorization Code-->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnGetAuthCode"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="@string/get_authorization_code"
+        android:layout_gravity="center"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        style="@style/button_style_danger"/>
+
+
+</LinearLayout>
