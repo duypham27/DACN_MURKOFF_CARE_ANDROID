@@ -1,7 +1,9 @@
 package com.example.dacn_murkoff_android.LoginPage;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -36,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText editPhoneNumber;
     private Button btnGetAuthCode;
+    private String phoneNumber;
 
     private FirebaseAuth mAuth;
 
@@ -52,16 +55,9 @@ public class LoginActivity extends AppCompatActivity {
 
         setTitleToolBar();
         initUI();
+        setupEvent();
 
         mAuth = FirebaseAuth.getInstance();
-
-        btnGetAuthCode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String strPhoneNumber = editPhoneNumber.getText().toString().trim();
-                onClickVerifyPhoneNumber(strPhoneNumber);
-            }
-        });
 
     }
 
@@ -69,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
     private void setTitleToolBar(){
         if(getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Verify Phone Number");
+
         }
     }
 
@@ -76,35 +73,62 @@ public class LoginActivity extends AppCompatActivity {
     private void initUI() {
         editPhoneNumber = findViewById(R.id.editPhoneNumber);
         btnGetAuthCode = findViewById(R.id.btnGetAuthCode);
+
+        //login with phone number
+        mAuth = FirebaseAuth.getInstance();
+        mAuth.setLanguageCode("vi");
     }
 
-    private void onClickVerifyPhoneNumber(String strPhoneNumber) {
-        PhoneAuthOptions options =
-                PhoneAuthOptions.newBuilder(mAuth)
-                        .setPhoneNumber(strPhoneNumber)       // Phone number to verify
-                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-                        .setActivity(this)                 // (optional) Activity for callback binding
-                        // If no activity is passed, reCAPTCHA verification can not be used.
-                        .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-                            @Override
-                            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-                                signInWithPhoneAuthCredential(phoneAuthCredential);
-                            }
+    private void setupEvent()
+    {
+        /*BUTTON GET CONFIRM CODE*/
+        btnGetAuthCode.setOnClickListener(view -> {
+            phoneNumber = editPhoneNumber.getText().toString();
 
-                            @Override
-                            public void onVerificationFailed(@NonNull FirebaseException e) {
-                                Toast.makeText(LoginActivity.this, "Verification Failed", Toast.LENGTH_SHORT).show();
-                            }
+            /*Step 1 - verify input */
+            if(TextUtils.isEmpty(phoneNumber) )
+            {
+                Toast.makeText(this, R.string.do_not_let_phone_number_empty, Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if(phoneNumber.length() == 10)
+            {
+                Toast.makeText(this, R.string.only_enter_number_except_first_zero, Toast.LENGTH_SHORT).show();
+                return;
+            }
+            String phoneNumberFormatted = "+84" + phoneNumber;
 
-                            @Override
-                            public void onCodeSent(@NonNull String verificationId,
+            /*Step 2 - setup phone auth options*/
+            PhoneAuthOptions options =
+                    PhoneAuthOptions.newBuilder(mAuth)
+                            .setPhoneNumber(phoneNumberFormatted)       // Phone number to verify
+                            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                            .setActivity(this)                 // (optional) Activity for callback binding
+                            // If no activity is passed, reCAPTCHA verification can not be used.
+                            .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                                @Override
+                                public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+                                        signInWithPhoneAuthCredential(phoneAuthCredential);
+                                }
+
+                                @Override
+                                public void onVerificationFailed(@NonNull FirebaseException e) {
+                                    Toast.makeText(LoginActivity.this, "Verification Failed", Toast.LENGTH_SHORT).show();
+                                }
+
+                                @Override
+                                public void onCodeSent(@NonNull String verificationId,
                                                    @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                                super.onCodeSent(verificationId, forceResendingToken);
-                                goToEnterOTPActivity(strPhoneNumber, verificationId);
-                            }
-                        })          // OnVerificationStateChangedCallbacks
-                        .build();
-        PhoneAuthProvider.verifyPhoneNumber(options);
+                                        super.onCodeSent(verificationId, forceResendingToken);
+                                        goToEnterOTPActivity(phoneNumberFormatted, verificationId);
+                                }
+                            })          // OnVerificationStateChangedCallbacks
+                            .build();
+            PhoneAuthProvider.verifyPhoneNumber(options);
+        }); /*End BUTTON GET CONFIRM CODE*/
+
+        /*BUTTON GOOGLE LOGIN*/
+
     }
 
 
