@@ -11,10 +11,14 @@
 
 
     <!-- THEME & BACKGROUND -->
+    <color name="colorThemeMurkoff">#8C9194</color>
+    <color name="colorInputBackground">#ECEEF0</color>
     <color name="colorThemeBlueNavy">#1D3A70</color>
     <color name="colorThemeBlue">#2196F3</color>
     <color name="colorTheme">#fe001a</color>
     <color name="colorBackground">@color/white</color>
+
+    <color name="colorBlue">#182864</color>
 
 
 </resources>

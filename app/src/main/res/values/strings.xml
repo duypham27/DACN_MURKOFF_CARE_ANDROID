@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LoginByFirebase</string>
+    <string name="app_name">MurkOff Care</string>
     <string name="enter_phone_number_here">Enter phone number here</string>
     <string name="enter_otp_code">Enter OTP Code</string>
     <string name="send_otp_code">Send OTP Code</string>
@@ -10,4 +10,5 @@
     <string name="get_authorization_code">Get Authorization Code</string>
     <string name="do_not_let_phone_number_empty">Do not let phone number empty</string>
     <string name="only_enter_number_except_first_zero">Only enter number except first zero</string>
+    <string name="check_your_internet_connection">Check Your Internet Connection</string>
 </resources>

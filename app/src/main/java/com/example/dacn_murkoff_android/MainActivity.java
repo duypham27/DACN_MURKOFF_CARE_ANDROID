@@ -1,13 +1,23 @@
 package com.example.dacn_murkoff_android;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.dacn_murkoff_android.LoginPage.LoginActivity;
+
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,21 +32,16 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        getDataIntent();
-        setTitleToolBar();
+
+        // SWITCH TO LOGIN PAGE IN 3SEC
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }, 1500);
 
     }
-
-    private void getDataIntent() {
-        String strPhoneNumber = getIntent().getStringExtra("phone_number");
-        TextView tvUserInfo = findViewById(R.id.tvUserInfo);
-        tvUserInfo.setText(strPhoneNumber);
-    }
-
-    private void setTitleToolBar(){
-        if(getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Main Activity");
-        }
-    }
-
 }
