@@ -16,7 +16,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.dacn_murkoff_android.MainActivity;
+import com.example.dacn_murkoff_android.HomePage.HomePageActivity;
 import com.example.dacn_murkoff_android.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -143,7 +143,7 @@ public class EnterOTPActivity extends AppCompatActivity {
 
                             FirebaseUser user = task.getResult().getUser();
                             // Update UI
-                            goToMainActivity(user.getPhoneNumber());
+                            goToHomePageActivity(user.getPhoneNumber());
                         } else {
                             // Sign in failed, display a message and update the UI
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -157,8 +157,8 @@ public class EnterOTPActivity extends AppCompatActivity {
                 });
     }
 
-    private void goToMainActivity(String phoneNumber) {
-        Intent intent = new Intent(this, MainActivity.class);
+    private void goToHomePageActivity(String phoneNumber) {
+        Intent intent = new Intent(this, HomePageActivity.class);
         intent.putExtra("phone_number", phoneNumber);
         startActivity(intent);
     }

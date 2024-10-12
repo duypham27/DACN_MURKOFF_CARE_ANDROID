@@ -121,11 +121,12 @@
         android:gravity="center">
 
         <!--GOOGLE LOGIN OPTIONS-->
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/google_btn"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_margin="20dp"
+            android:background="@drawable/rounded_icon_background"
             android:src="@drawable/ic_google"/>
 
         <!--FACEBOOK LOGIN OPTIONS-->

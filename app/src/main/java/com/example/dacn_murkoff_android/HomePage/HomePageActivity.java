@@ -31,8 +31,11 @@ public class HomePageActivity extends AppCompatActivity {
 
     private void getDataIntent() {
         String strPhoneNumber = getIntent().getStringExtra("phone_number");
+        String username = getIntent().getStringExtra("display_name");
+
         TextView tvUserInfo = findViewById(R.id.tvUserInfo);
         tvUserInfo.setText(strPhoneNumber);
+        tvUserInfo.setText("Welcome, " + username);
     }
 
     private void setTitleToolBar(){
