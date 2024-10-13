@@ -34,8 +34,16 @@ public class HomePageActivity extends AppCompatActivity {
         String username = getIntent().getStringExtra("display_name");
 
         TextView tvUserInfo = findViewById(R.id.tvUserInfo);
-        tvUserInfo.setText(strPhoneNumber);
-        tvUserInfo.setText("Welcome, " + username);
+
+        if (strPhoneNumber != null && !strPhoneNumber.isEmpty()) {
+            tvUserInfo.setText("Phone: " + strPhoneNumber);
+        }
+        else if (username != null && !username.isEmpty()) {
+            tvUserInfo.setText("Welcome, " + username);
+        }
+        else {
+            tvUserInfo.setText("No user info available");
+        }
     }
 
     private void setTitleToolBar(){
