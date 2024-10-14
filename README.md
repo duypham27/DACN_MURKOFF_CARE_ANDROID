@@ -6,6 +6,6 @@
 <h1 align ="center"> Chào mừng đến với Murkoff Corporation</h1>
 
 <p align="center">
-    <img src="./photo/647b1d392e6a9734ce7b.jpg">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzzExH88QMowxp8_JYEkmVWqLRiSSRqdXosw&s">
 </p>
 
