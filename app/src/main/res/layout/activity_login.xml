@@ -131,6 +131,7 @@
 
         <!--FACEBOOK LOGIN OPTIONS-->
         <ImageView
+            android:id="@+id/facebook_btn"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_margin="20dp"
@@ -138,6 +139,7 @@
 
         <!--GITHUB LOGIN OPTIONS-->
         <ImageView
+            android:id="@+id/github_btn"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_margin="20dp"

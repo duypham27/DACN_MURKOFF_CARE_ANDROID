@@ -11,4 +11,5 @@
     <string name="do_not_let_phone_number_empty">Do not let phone number empty</string>
     <string name="only_enter_number_except_first_zero">Only enter number except first zero</string>
     <string name="check_your_internet_connection">Check Your Internet Connection</string>
+    <string name="login_by_github">Login By Github</string>
 </resources>

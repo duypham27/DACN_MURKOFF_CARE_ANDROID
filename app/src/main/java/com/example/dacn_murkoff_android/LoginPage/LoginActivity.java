@@ -48,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = LoginActivity.class.getName();
 
+    ImageView btnGithub;
     private EditText editPhoneNumber;
     private Button btnGetAuthCode;
     private String phoneNumber;
@@ -55,6 +56,8 @@ public class LoginActivity extends AppCompatActivity {
     private SignInClient oneTapClient;
     private BeginSignInRequest signInRequest;
     public static final int REQ_ONE_TAP = 100;
+
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     private FirebaseAuth mAuth;
 
@@ -82,6 +85,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        /*CONNECT TO GOOGLE CLOUD*/
         oneTapClient = Identity.getSignInClient(this);
         signInRequest = BeginSignInRequest.builder()
                 .setPasswordRequestOptions(BeginSignInRequest.PasswordRequestOptions.builder()
@@ -101,7 +105,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
     private void setTitleToolBar(){
         if(getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Verify Phone Number");
@@ -109,13 +112,12 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-
     private void initUI() {
 
         editPhoneNumber = findViewById(R.id.editPhoneNumber);
         btnGetAuthCode = findViewById(R.id.btnGetAuthCode);
-
         btnGoogleAuth = findViewById(R.id.google_btn);
+        btnGithub = findViewById(R.id.github_btn);
 
         //login with phone number
         mAuth = FirebaseAuth.getInstance();
@@ -171,6 +173,17 @@ public class LoginActivity extends AppCompatActivity {
                             .build();
             PhoneAuthProvider.verifyPhoneNumber(options);
         }); /*End BUTTON GET CONFIRM CODE*/
+
+
+        /*BUTTON GITHUB LOGIN*/
+        btnGithub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, GithubAuthActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -232,6 +245,7 @@ public class LoginActivity extends AppCompatActivity {
                 break;
         }
     }
+    /*END BUTTON GOOGLE LOGIN*/
 
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
@@ -258,6 +272,8 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
 
     private void goToHomePageActivity(String phoneNumber) {
         Intent intent = new Intent(this, HomePageActivity.class);
