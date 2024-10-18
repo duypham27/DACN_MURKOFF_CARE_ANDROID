@@ -33,6 +33,7 @@ public class HomePageActivity extends AppCompatActivity {
         String strPhoneNumber = getIntent().getStringExtra("phone_number");
         String username = getIntent().getStringExtra("display_name");
 
+
         TextView tvUserInfo = findViewById(R.id.tvUserInfo);
 
         if (strPhoneNumber != null && !strPhoneNumber.isEmpty()) {
