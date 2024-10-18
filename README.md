@@ -6,7 +6,7 @@
 <h1 align ="center"> Chào mừng đến với Murkoff Corporation</h1>
 
 <p align="center">
-    <img src="./res/drawable/murkoff.png" alt="Murkoff Image">
+    <img src="./drawable/murkoff.png" alt="Murkoff Image">
 </p>
 
 
