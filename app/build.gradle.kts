@@ -42,12 +42,15 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    //Auth Phone From Firebase
+    //Auth Phone + Github From Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
 
     //Auth Google Login
     implementation ("com.google.android.gms:play-services-auth:21.2.0")
+
+    //GSON
+    implementation ("com.google.code.gson:gson:2.11.0")
 
 }
