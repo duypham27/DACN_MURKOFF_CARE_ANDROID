@@ -16,4 +16,7 @@
     <string name="appointment">Appointment</string>
     <string name="notification">Notification</string>
     <string name="personality">Personality</string>
+    <string name="service">Service</string>
+    <string name="speciality">Speciality</string>
+    <string name="doctor">Doctor</string>
 </resources>
