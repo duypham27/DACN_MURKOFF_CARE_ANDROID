@@ -12,4 +12,8 @@
     <string name="only_enter_number_except_first_zero">Only enter number except first zero</string>
     <string name="check_your_internet_connection">Check Your Internet Connection</string>
     <string name="login_by_github">Login By Github</string>
+    <string name="home">Home</string>
+    <string name="appointment">Appointment</string>
+    <string name="notification">Notification</string>
+    <string name="personality">Personality</string>
 </resources>

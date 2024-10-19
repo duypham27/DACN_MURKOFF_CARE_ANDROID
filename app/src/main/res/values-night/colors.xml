@@ -19,4 +19,8 @@
 
     <color name="colorBlue">#182864</color>
 
+    <!-- BOTTOM NAVBAR MENU BACKGROUND -->
+    <color name="colorButtomNavigationMenuPressed">#1D3A70</color>
+    <color name="colorButtomNavigationMenuEnable">#8D8F97</color>
+
 </resources>
