@@ -19,4 +19,22 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="button_style_cancel">
+        <item name="android:layout_width">217dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@drawable/button_style_cancel</item>
+        <item name="android:textColor">@drawable/button_style_text_color_state</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="button_style_accept">
+        <item name="android:layout_width">217dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@drawable/button_style_accept</item>
+        <item name="android:textColor">@drawable/button_style_text_color_state</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

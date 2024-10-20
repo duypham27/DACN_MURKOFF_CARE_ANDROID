@@ -8,7 +8,7 @@
     <!--TEXT-->
     <color name="textColorBlack">#FF000000</color>
     <color name="textColorWhite">#FFFFFFFF</color>
-
+    <color name="colorTextDialog">#182864</color>
 
     <!-- THEME & BACKGROUND -->
     <color name="colorThemeMurkoff">#8C9194</color>
@@ -19,9 +19,15 @@
     <color name="colorBackground">@color/white</color>
 
     <color name="colorBlue">#182864</color>
+    <color name="colorBrightBlue">#0096FF</color>
+    <color name="colorGreen">#43A047</color>
+    <color name="colorKellyGreen">#4CBB17</color>
+    <color name="colorYellow">#fb3</color>
 
     <!-- BOTTOM NAVBAR MENU BACKGROUND -->
     <color name="colorButtomNavigationMenuPressed">#182864</color>
     <color name="colorButtomNavigationMenuEnable">#8C9194</color>
 
+    <!-- DIALOG BACKGROUND -->
+    <color name="colorIconBackground">#F9FAFB</color>
 </resources>
