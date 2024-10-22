@@ -30,4 +30,6 @@
 
     <!-- DIALOG BACKGROUND -->
     <color name="colorIconBackground">#F9FAFB</color>
+
+    <color name="colorSeparator">#e6e6e6</color>
 </resources>

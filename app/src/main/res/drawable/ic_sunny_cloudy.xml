@@ -1,0 +1,32 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Mặt trời -->
+    <group>
+        <!-- Vòng tròn mặt trời -->
+        <path
+            android:fillColor="#FFEB3B"
+            android:pathData="M50,30a20,20 0,1 1,-20 20 20,20 0,0 1,20 -20z" />
+
+        <!-- Tia nắng -->
+        <path
+            android:fillColor="#FFEB3B"
+            android:pathData="M50,8v10m0,64v10m32.42,-32.42h10m-64.84,0h-10m45.25,-22.18l7.07,-7.07m-50.66,50.66l-7.07,-7.07m57.73,-15.73l7.07,7.07m-57.73,-50.66l7.07,7.07" />
+    </group>
+
+    <!-- Mây -->
+    <group>
+        <!-- Đám mây lớn -->
+        <path
+            android:fillColor="#90A4AE"
+            android:pathData="M70,60c0,-7.18 -5.82,-13 -13,-13 -4.07,0 -7.67,1.87 -10,4.81C43.31,50.97 39.84,50 36,50 27.16,50 20,57.16 20,66s7.16,16 16,16h34c6.63,0 12,-5.37 12,-12 0,-6.62 -5.38,-10 -12,-10z" />
+
+        <!-- Đám mây nhỏ -->
+        <path
+            android:fillColor="#B0BEC5"
+            android:pathData="M55,65c0,-3.87 -3.13,-7 -7,-7 -1.97,0 -3.77,0.89 -5,2.29C41.53,58.97 40,59 39,59c-3.87,0 -7,3.13 -7,7s3.13,7 7,7h12c3.87,0 7,-3.13 7,-7z" />
+    </group>
+</vector>

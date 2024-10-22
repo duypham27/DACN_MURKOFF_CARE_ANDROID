@@ -61,18 +61,18 @@ public class HomePageFragment extends Fragment {
         context = requireContext();
         globalVariable = (GlobalVariable) requireActivity().getApplication();
 
-//        recyclerViewSpeciality = view.findViewById(R.id.recyclerViewSpeciality);
-//        recyclerViewDoctor = view.findViewById(R.id.recyclerViewDoctor);
-//        recyclerViewButton = view.findViewById(R.id.recyclerViewButton);
-//        recyclerViewHandbook = view.findViewById(R.id.recyclerViewHandbook);
-//        recyclerViewRecommendedPages = view.findViewById(R.id.recyclerViewRecommendedPages);
-//
-//        searchBar = view.findViewById(R.id.searchBar);
-//        txtReadMoreSpeciality = view.findViewById(R.id.txtReadMoreSpeciality);
-//        txtReadMoreDoctor = view.findViewById(R.id.txtReadMoreDoctor);
-//
-//        txtWeather = view.findViewById(R.id.txtWeather);
-//        txtDate = view.findViewById(R.id.txtDate);
+        recyclerViewSpeciality = view.findViewById(R.id.recyclerViewSpeciality);
+        recyclerViewDoctor = view.findViewById(R.id.recyclerViewDoctor);
+        recyclerViewButton = view.findViewById(R.id.recyclerViewButton);
+        recyclerViewHandbook = view.findViewById(R.id.recyclerViewHandbook);
+        recyclerViewRecommendedPages = view.findViewById(R.id.recyclerViewRecommendedPages);
+
+        searchBar = view.findViewById(R.id.searchBar);
+        txtReadMoreSpeciality = view.findViewById(R.id.txtReadMoreSpeciality);
+        txtReadMoreDoctor = view.findViewById(R.id.txtReadMoreDoctor);
+
+        txtWeather = view.findViewById(R.id.txtWeather);
+        txtDate = view.findViewById(R.id.txtDate);
 
     }
 
