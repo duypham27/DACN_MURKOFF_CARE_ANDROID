@@ -15,10 +15,15 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dacn_murkoff_android.Helper.GlobalVariable;
+import com.example.dacn_murkoff_android.Model.Doctor;
+import com.example.dacn_murkoff_android.Model.Speciality;
 import com.example.dacn_murkoff_android.R;
+import com.example.dacn_murkoff_android.RecyclerView.DoctorRecyclerView;
+import com.example.dacn_murkoff_android.RecyclerView.SpecialityRecyclerView;
 
 import java.util.HashMap;
 import java.util.List;
@@ -80,20 +85,70 @@ public class HomePageFragment extends Fragment {
     private void setupViewModel()
     {
         /*Step 1 - Khởi tạo ViewModel*/
-
+        HomePageViewModel viewModel = new ViewModelProvider(this).get(HomePageViewModel.class);
+        viewModel.instantiate();
 
         /*Step 2 - Chuẩn bị header & tham số*/
+        Map<String, String> header = globalVariable.getHeaders();
+        header.put("type", "patient");
 
 
+        /*Step 3 - Listen Speciality Read All */
+        Map<String, String> paramsSpeciality = new HashMap<>();
+        viewModel.specialityReadAll(header, paramsSpeciality);
 
-        /*Step 3 - listen speciality Read All */
+        viewModel.getSpecialityReadAllResponse().observe(getViewLifecycleOwner(), response->{
+            int result = response.getResult();
+            if( result == 1)
+            {
+                List<Speciality> list = response.getData();
+                setupRecyclerViewSpeciality(list);
+            }
+        });
 
 
+        /*Step 4 - Listen Doctor read all*/
+        Map<String, String> paramsDoctor = new HashMap<>();
+        viewModel.doctorReadAll(header, paramsDoctor);
 
-        /*Step 4 - listen doctor read all*/
+//        for (Map.Entry<String,String> entry : paramsDoctor.entrySet())
+//            System.out.println("Key = " + entry.getKey() +
+//                    ", Value = " + entry.getValue());
+//
+//        for (Map.Entry<String,String> entry : header.entrySet())
+//            System.out.println("Key = " + entry.getKey() +
+//                    ", Value = " + entry.getValue());
 
+        viewModel.getDoctorReadAllResponse().observe(getViewLifecycleOwner(), response->{
+            int result = response.getResult();
+            if( result == 1)
+            {
+                List<Doctor> list = response.getData();
+                setupRecyclerViewDoctor(list);
+            }
+        });
     }
 
+    /* Setup Recycler View Speciality */
+    private void setupRecyclerViewSpeciality(List<Speciality> list)
+    {
+        SpecialityRecyclerView specialityAdapter = new SpecialityRecyclerView(requireActivity(), list, R.layout.recycler_view_element_speciality);
+        recyclerViewSpeciality.setAdapter(specialityAdapter);
+
+        LinearLayoutManager manager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerViewSpeciality.setLayoutManager(manager);
+    }
+
+
+    /* Setup Recycler View Doctor */
+    private void setupRecyclerViewDoctor(List<Doctor> list)
+    {
+        DoctorRecyclerView doctorAdapter = new DoctorRecyclerView(requireActivity(), list);
+        recyclerViewDoctor.setAdapter(doctorAdapter);
+
+        LinearLayoutManager manager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerViewDoctor.setLayoutManager(manager);
+    }
 
 
 }

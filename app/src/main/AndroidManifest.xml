@@ -15,6 +15,27 @@
         android:theme="@style/Theme.DACN_MURKOFF_ANDROID"
         tools:targetApi="31">
         <activity
+            android:name=".SettingsPage.SettingsFragment"
+            android:exported="false" />
+        <activity
+            android:name=".AppointmentPage.AppointmentPageFragment"
+            android:exported="false" />
+        <activity
+            android:name=".AppointmentPage.AppointmentPageInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BookingPage.BookingPageInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NotificationPage.NotificationFragment"
+            android:exported="false" />
+        <activity
+            android:name=".DoctorPage.DoctorPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SpecialityPage.SpecialityPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomePage.HomePageFragment"
             android:exported="false" />
         <activity

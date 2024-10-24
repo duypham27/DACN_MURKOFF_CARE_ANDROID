@@ -1,5 +1,6 @@
 package com.example.dacn_murkoff_android.HomePage;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,16 +12,22 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.example.dacn_murkoff_android.AppointmentPage.AppointmentPageFragment;
 import com.example.dacn_murkoff_android.Helper.GlobalVariable;
+import com.example.dacn_murkoff_android.NotificationPage.NotificationFragment;
 import com.example.dacn_murkoff_android.R;
+import com.example.dacn_murkoff_android.SettingsPage.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.lang.ref.WeakReference;
+import java.util.Map;
 
 public class HomePageActivity extends AppCompatActivity {
 
-    private final String TAG = "Homepage Activity";
+    private final String TAG = "HomePage Activity";
     private Dialog dialog;
     private GlobalVariable globalVariable;
 
@@ -50,10 +57,57 @@ public class HomePageActivity extends AppCompatActivity {
         /*Enable HomeFragment by default*/
         fragment = new HomePageFragment();
         fragmentTag = "homePageFragment";
-        //enableFragment(fragment, fragmentTag);
+        enableFragment(fragment, fragmentTag);
 
+        //Necessary Functions
+        setupVariable();
+        setupEvent();
         getDataIntent();
 
+    }
+
+
+    /* Thiết lập xử lý các biến */
+    private void setupVariable()
+    {
+        globalVariable = (GlobalVariable) this.getApplication();
+        dialog = new Dialog(this);
+
+        sharedPreferences = this.getApplication()
+                .getSharedPreferences(globalVariable.getSharedReferenceKey(), MODE_PRIVATE);
+        bottomNavigationView = findViewById(R.id.bottomNavigationMenu);
+    }
+
+    /* Thiết lập xử lý các lựa chọn */
+    @SuppressLint("NonConstantResourceId")
+    private void setupEvent(){
+        /*set up event when users click on item in bottom navigation view*/
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            /*When ever users click on any icon, we updates the number of unread notifications*/
+
+
+            int shortcut = item.getItemId();
+
+            if(shortcut == R.id.shortcutHome)
+            {
+                //setNumberOnNotificationIcon(); (not necessary)
+                fragment = new HomePageFragment();
+                fragmentTag = "homeFragment";
+            } else if (shortcut == R.id.shortcutNotification) {
+                //setNumberOnNotificationIcon(); (necessary)
+                fragment = new NotificationFragment();
+                fragmentTag = "notificationFragment";
+            } else if (shortcut == R.id.shortcutAppointment) {
+                fragment = new AppointmentPageFragment();
+                fragmentTag = "appointmentFragment";
+            } else if (shortcut == R.id.shortcutPersonality) {
+                fragment = new SettingsFragment();
+                fragmentTag = "settingsFragment";
+            }
+
+            enableFragment(fragment, fragmentTag);
+            return true;
+        });
     }
 
     private void getDataIntent() {
@@ -75,6 +129,35 @@ public class HomePageActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * activate a fragment right away
+     * */
+    public void enableFragment(Fragment fragment, String fragmentTag)
+    {
+        /*Step 0 - update again fragmentTag to handle onBackPress()*/
+        this.fragmentTag = fragmentTag;
 
+        /*Step 1*/
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+
+
+        /*Step 2*/
+        Map<String, String > headers = ((GlobalVariable)getApplication()).getHeaders();
+        String accessToken = headers.get("Authorization");
+        String contentType = headers.get("Content-Type");
+
+
+        /*Step 3*/
+        Bundle bundle = new Bundle();
+        bundle.putString("accessToken", accessToken);
+        bundle.putString("contentType", contentType);
+        fragment.setArguments(bundle);
+
+
+        /*Step 4*/
+        transaction.replace(R.id.frameLayout, fragment, fragmentTag);
+        transaction.commit();
+    }
 
 }

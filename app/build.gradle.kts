@@ -41,6 +41,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     //Auth Phone + Github From Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
@@ -56,5 +57,14 @@ dependencies {
     // Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    //Picasso from picasso
+    implementation ("com.squareup.picasso:picasso:2.8")
+
+    //CircleImageView from hdodenhof
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
+    // icon badge - is used to set number on the top-right corner of icon
+    implementation ("com.google.android.material:material:1.8.0-alpha02")
 
 }
