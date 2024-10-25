@@ -39,7 +39,7 @@ public class Dialog {
     }
 
     /* announe hiển thị thông báo 1 xác nhận */
-    private void announce() {
+    public void announce() {
         viewAlert = View.inflate(context, R.layout.dialog_annouce, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(viewAlert);
