@@ -18,7 +18,7 @@
             android:layout_gravity="start"
             android:src="@drawable/murkoff_banner"
             android:layout_width="200dp"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:contentDescription="Murkoff Banner" />
 
         <LinearLayout
@@ -40,7 +40,7 @@
             <TextView
                 android:id="@+id/txtWeather"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="25dp"
                 android:drawableStart="@drawable/ic_sunny_cloudy"
                 android:drawablePadding="10dp"
                 android:paddingVertical="5dp"

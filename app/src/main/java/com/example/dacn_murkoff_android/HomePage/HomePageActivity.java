@@ -64,7 +64,9 @@ public class HomePageActivity extends AppCompatActivity {
         setupEvent();
         getDataIntent();
 
+
     }
+
 
 
     /* Thiết lập xử lý các biến */

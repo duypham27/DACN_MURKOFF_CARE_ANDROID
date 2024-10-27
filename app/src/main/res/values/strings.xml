@@ -51,4 +51,9 @@
     <string name="login_failed">Login Failed</string>
     <string name="empty_phone_number_or_verificationId">Empty Phone Number Or VerificationId</string>
     <string name="your_health_our_business">Your Health, Our Business</string>
+    <string name="invalid_phone_number">Invalid Phone Number</string>
+    <string name="code_sent">Code Sent</string>
+    <string name="invalid_verification_code">Invalid Verification Code</string>
+    <string name="empty_verification_code">Empty Verification Code</string>
+    <string name="verification_id_not_found">Verification Id Not Found</string>
 </resources>

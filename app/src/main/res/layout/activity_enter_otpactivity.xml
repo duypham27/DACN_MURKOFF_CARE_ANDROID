@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:padding="20dp"
     android:background="@drawable/loginbackground"
-    tools:context=".LoginPage.EnterOTPActivity">
+    tools:context=".LoginPage.VerificationActivity">
 
     <!--MURKOFF LOGO-->
     <ImageView
@@ -43,7 +43,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your World, Our Business"
+            android:text="@string/your_health_our_business"
             android:textColor="@color/white"
             android:textSize="14sp"
             android:textStyle="italic"
