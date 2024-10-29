@@ -4,6 +4,7 @@ import com.example.dacn_murkoff_android.Container.AppointmentQueue;
 import com.example.dacn_murkoff_android.Container.AppointmentReadAll;
 import com.example.dacn_murkoff_android.Container.AppointmentReadByID;
 import com.example.dacn_murkoff_android.Container.BookingCreate;
+import com.example.dacn_murkoff_android.Container.BookingPhotoReadAll;
 import com.example.dacn_murkoff_android.Container.BookingReadAll;
 import com.example.dacn_murkoff_android.Container.BookingReadByID;
 import com.example.dacn_murkoff_android.Container.DoctorReadAll;
@@ -14,6 +15,8 @@ import com.example.dacn_murkoff_android.Container.NotificationReadAll;
 import com.example.dacn_murkoff_android.Container.PatientProfile;
 import com.example.dacn_murkoff_android.Container.PatientProfileChangeAvatar;
 import com.example.dacn_murkoff_android.Container.PatientProfileChangePersonalInformation;
+import com.example.dacn_murkoff_android.Container.ServiceReadAll;
+import com.example.dacn_murkoff_android.Container.ServiceReadByID;
 import com.example.dacn_murkoff_android.Container.SpecialityReadAll;
 import com.example.dacn_murkoff_android.Container.SpecialityReadByID;
 
@@ -91,7 +94,12 @@ public interface HTTPRequest {
     Call<DoctorReadByID> doctorReadByID(@HeaderMap Map<String, String> headers, @Path("id") String id);
 
 
+    /**********************SERVICE**********************/
+    @GET("api/services")
+    Call<ServiceReadAll> serviceReadAll(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> parameters);
 
+    @GET("api/services/{id}")
+    Call<ServiceReadByID> serviceReadByID(@HeaderMap Map<String, String> headers, @Path("id") String id);
 
 
 
@@ -118,6 +126,9 @@ public interface HTTPRequest {
     Call<BookingReadAll> bookingReadAll(@HeaderMap Map<String, String> header, @HeaderMap Map<String, String> parameters);
 
 
+    /** BOOKING PHOTO **/
+    @GET("api/booking/photos/{id}")
+    Call<BookingPhotoReadAll> bookingPhotoReadAll(@HeaderMap Map<String, String> headers, @Path("id") String id);
 
     /** APPOINTMENTS **/
     @GET("api/patient/appointments")

@@ -123,4 +123,17 @@
     <string name="watch_medical_record">Watch Medical Record</string>
     <string name="watch_medical_treatment">Watch Medical Treatment</string>
     <string name="you_can_read_again_in_settings"><![CDATA[You can go to Personal -> Medical History to review the information later]]></string>
+    <string name="default_service_name">Xét nghiệm định lượng kháng thể SARS-CoV-2</string>
+    <string name="default_booking_name">Booking name: Phạm Bạch An Duy</string>
+    <string name="default_booking_phone">Booking patient: 0899.255.255</string>
+    <string name="default_patient_name">Patient name: Phạm Bạch An Duy</string>
+    <string name="bookingName2">Booking personal name</string>
+    <string name="booking">Booking</string>
+    <string name="free_booking_fee">Free booking fee</string>
+    <string name="bookingStatus">Schedule status</string>
+    <string name="my_address">Đường 69, Phường Linh Trung, Thành phố Thủ Đức</string>
+    <string name="photo">Photo</string>
+    <string name="note_5">By confirming your booking, you fully agree to our Terms of Service.</string>
+    <string name="note_7">These photos below are photos that you have been uploaded. To remove unexpected photo, swipe from the right.</string>
+    <string name="dark_mode">Dark mode</string>
 </resources>

@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -57,6 +58,7 @@ import retrofit2.Retrofit;
 public class InformationActivity extends AppCompatActivity {
     private final String TAG = "Information_Activity";
 
+    private ImageButton btnBack;
     private CircleImageView imgAvatar;
     private TextView txtHealthInsuranceNumber;
 
@@ -80,6 +82,8 @@ public class InformationActivity extends AppCompatActivity {
     private Uri uriAvatar;
     private AppCompatButton btnUploadAvatar;
     private SharedPreferences sharedPreferences;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +98,7 @@ public class InformationActivity extends AppCompatActivity {
     private void setupComponent() {
         imgAvatar = findViewById(R.id.imgAvatar);
         txtHealthInsuranceNumber = findViewById(R.id.txtHealthInsuranceNumber);
+        btnBack = findViewById(R.id.btnBack);
 
         txtEmail = findViewById(R.id.txtEmail);
         txtName = findViewById(R.id.txtName);
@@ -239,6 +244,9 @@ public class InformationActivity extends AppCompatActivity {
             }
             uploadPhotoToServer(uriAvatar);
         });
+
+        btnBack.setOnClickListener(view->finish());
+
     }
 
     private void changePersonalInformation(String name, String gender, String birthday, String address)

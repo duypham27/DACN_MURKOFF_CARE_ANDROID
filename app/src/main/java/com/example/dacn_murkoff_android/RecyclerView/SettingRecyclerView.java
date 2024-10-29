@@ -16,7 +16,9 @@ import com.example.dacn_murkoff_android.Configuration.Constant;
 import com.example.dacn_murkoff_android.HomePage.HomePageActivity;
 import com.example.dacn_murkoff_android.Model.Setting;
 import com.example.dacn_murkoff_android.R;
+import com.example.dacn_murkoff_android.SettingsPage.AppearanceActivity;
 import com.example.dacn_murkoff_android.SettingsPage.AppointmentHistoryActivity;
+import com.example.dacn_murkoff_android.SettingsPage.BookingHistoryActivity;
 import com.example.dacn_murkoff_android.SettingsPage.InformationActivity;
 import com.example.dacn_murkoff_android.WebPage.WebPageActivity;
 
@@ -53,17 +55,17 @@ public class SettingRecyclerView extends RecyclerView.Adapter<SettingRecyclerVie
             Intent intent;
             switch (element.getId()){
                 case "appearance":
-//                    intent = new Intent(context, AppearanceActivity.class);
-//                    context.startActivity(intent);
-//                    break;
+                    intent = new Intent(context, AppearanceActivity.class);
+                    context.startActivity(intent);
+                    break;
                 case "appointmentHistory":
                     intent = new Intent(context, AppointmentHistoryActivity.class);
                     context.startActivity(intent);
                     break;
                 case "bookingHistory":
-//                    intent = new Intent(context, BookingHistoryActivity.class);
-//                    context.startActivity(intent);
-//                    break;
+                    intent = new Intent(context, BookingHistoryActivity.class);
+                    context.startActivity(intent);
+                    break;
                 case "exit":
                     HomePageActivity.getInstance().exit();
                     break;
