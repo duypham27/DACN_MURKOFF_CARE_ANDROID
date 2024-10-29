@@ -1,7 +1,6 @@
 package com.example.dacn_murkoff_android.HomePage;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,6 +16,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.dacn_murkoff_android.AppointmentPage.AppointmentPageFragment;
+import com.example.dacn_murkoff_android.Helper.Dialog;
 import com.example.dacn_murkoff_android.Helper.GlobalVariable;
 import com.example.dacn_murkoff_android.LoginPage.LoginActivity;
 import com.example.dacn_murkoff_android.NotificationPage.NotificationFragment;
@@ -164,6 +164,18 @@ public class HomePageActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        dialog.confirm();
+        dialog.show(getString(R.string.attention),
+                getString(R.string.are_you_sure_about_that), R.drawable.ic_info);
+        dialog.btnOK.setOnClickListener(view->{
+            super.onBackPressed();
+            finish();
+        });
+        dialog.btnCancel.setOnClickListener(view-> dialog.close());
+    }
+
     /**
      * Exit the application
      * This function is called in settingRecyclerView
@@ -185,5 +197,7 @@ public class HomePageActivity extends AppCompatActivity {
         finish();
         startActivity(intent);
     }
+
+
 
 }

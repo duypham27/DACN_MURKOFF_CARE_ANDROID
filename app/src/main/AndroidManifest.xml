@@ -25,6 +25,9 @@
         android:theme="@style/Theme.DACN_MURKOFF_ANDROID"
         tools:targetApi="31">
         <activity
+            android:name=".AlarmPage.AlarmPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".SettingsPage.AppearanceActivity"
             android:exported="false" />
         <activity

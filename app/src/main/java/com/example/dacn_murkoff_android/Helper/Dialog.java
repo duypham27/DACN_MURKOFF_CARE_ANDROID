@@ -52,7 +52,7 @@ public class Dialog {
     }
 
     /* confirm hiển thị thông báo xác nhận 2 lựa chọn yes/no */
-    private void confirm() {
+    public void confirm() {
         viewAlert = View.inflate(context, R.layout.dialog_confirm, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setView(viewAlert);

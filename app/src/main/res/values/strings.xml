@@ -136,4 +136,10 @@
     <string name="note_5">By confirming your booking, you fully agree to our Terms of Service.</string>
     <string name="note_7">These photos below are photos that you have been uploaded. To remove unexpected photo, swipe from the right.</string>
     <string name="dark_mode">Dark mode</string>
+    <string name="set_time">Set time</string>
+    <string name="message">Message</string>
+    <string name="vibrate">Vibrate</string>
+    <string name="schedule">Schedule</string>
+    <string name="confirm">Confirm</string>
+    <string name="are_you_sure_about_that">Are you sure about that?</string>
 </resources>

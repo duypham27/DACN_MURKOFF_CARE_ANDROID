@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dacn_murkoff_android.AlarmPage.AlarmPageActivity;
 import com.example.dacn_murkoff_android.Configuration.Constant;
 import com.example.dacn_murkoff_android.HomePage.HomePageActivity;
 import com.example.dacn_murkoff_android.Model.Setting;
@@ -54,8 +55,9 @@ public class SettingRecyclerView extends RecyclerView.Adapter<SettingRecyclerVie
         holder.layout.setOnClickListener(view -> {
             Intent intent;
             switch (element.getId()){
-                case "appearance":
-                    intent = new Intent(context, AppearanceActivity.class);
+                case "aboutUs":
+                    intent = new Intent(context, WebPageActivity.class);
+                    intent.putExtra("url", Constant.VIDEO_PATH());
                     context.startActivity(intent);
                     break;
                 case "appointmentHistory":
@@ -66,12 +68,12 @@ public class SettingRecyclerView extends RecyclerView.Adapter<SettingRecyclerVie
                     intent = new Intent(context, BookingHistoryActivity.class);
                     context.startActivity(intent);
                     break;
-                case "exit":
-                    HomePageActivity.getInstance().exit();
+                case "reminder":
+                    intent = new Intent(context, AlarmPageActivity.class);
+                    context.startActivity(intent);
                     break;
-                case "aboutUs":
-                    intent = new Intent(context, WebPageActivity.class);
-                    intent.putExtra("url", Constant.VIDEO_PATH());
+                case "appearance":
+                    intent = new Intent(context, AppearanceActivity.class);
                     context.startActivity(intent);
                     break;
                 case "information":
@@ -86,10 +88,9 @@ public class SettingRecyclerView extends RecyclerView.Adapter<SettingRecyclerVie
 //                    intent = new Intent(context, GuidePageActivity.class);
 //                    context.startActivity(intent);
 //                    break;
-                case "reminder":
-//                    intent = new Intent(context, AlarmPageActivity.class);
-//                    context.startActivity(intent);
-//                    break;
+                case "exit":
+                    HomePageActivity.getInstance().exit();
+                    break;
             }
 
         });
