@@ -19,11 +19,11 @@ public class Constant {
 
     public static String UPLOAD_URI()
     {
-        return "http://192.168.1.221:8080/DACN_MURKOFF_CARE/api/assets/uploads/";
+        return "http://localhost/DACN_API/api/assets/uploads/";
     }
 
     public static String APP_PATH()
     {
-        return "http://192.168.1.221:8080/DACN_MURKOFF_CARE/";
+        return "http://localhost/DACN_API/";
     }
 }

@@ -2,6 +2,7 @@ package com.example.dacn_murkoff_android.HomePage;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.dacn_murkoff_android.AppointmentPage.AppointmentPageFragment;
 import com.example.dacn_murkoff_android.Helper.GlobalVariable;
+import com.example.dacn_murkoff_android.LoginPage.LoginActivity;
 import com.example.dacn_murkoff_android.NotificationPage.NotificationFragment;
 import com.example.dacn_murkoff_android.R;
 import com.example.dacn_murkoff_android.SettingsPage.SettingsFragment;
@@ -160,6 +162,28 @@ public class HomePageActivity extends AppCompatActivity {
         /*Step 4*/
         transaction.replace(R.id.frameLayout, fragment, fragmentTag);
         transaction.commit();
+    }
+
+    /**
+     * Exit the application
+     * This function is called in settingRecyclerView
+     */
+    public void exit()
+    {
+        SharedPreferences sharedPreferences = this.getApplication()
+                .getSharedPreferences(globalVariable.getSharedReferenceKey(), MODE_PRIVATE);
+
+        sharedPreferences.edit().putString("accessToken", null).apply();
+        sharedPreferences.edit().putInt("darkMode", 1).apply();// 1 is off, 2 is on
+        sharedPreferences.edit().putString("language", getString(R.string.vietnamese)).apply();
+
+
+        System.out.println(TAG);
+        System.out.println("access token: " + sharedPreferences.getString("accessToken", null) );
+
+        Intent intent = new Intent(this, LoginActivity.class);
+        finish();
+        startActivity(intent);
     }
 
 }

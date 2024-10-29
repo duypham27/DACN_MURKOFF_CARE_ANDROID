@@ -143,20 +143,19 @@ public class LoginActivity extends AppCompatActivity {
     {
         /*BUTTON GET CONFIRM CODE*/
         btnGetAuthCode.setOnClickListener(view -> {
-            phoneNumber = editPhoneNumber.getText().toString().trim();
+            phoneNumber = editPhoneNumber.getText().toString();
 
             /*Step 1 - verify input */
-            if (TextUtils.isEmpty(phoneNumber)) {
+            if(TextUtils.isEmpty(phoneNumber) )
+            {
                 Toast.makeText(this, R.string.do_not_let_phone_number_empty, Toast.LENGTH_SHORT).show();
                 return;
             }
-
-            // Kiểm tra định dạng số điện thoại
-            if (phoneNumber.length() < 9 || phoneNumber.length() > 10) {
-                Toast.makeText(this, R.string.invalid_phone_number, Toast.LENGTH_SHORT).show();
+            if(phoneNumber.length() == 10)
+            {
+                Toast.makeText(this, R.string.only_enter_number_except_first_zero, Toast.LENGTH_SHORT).show();
                 return;
             }
-
             String phoneNumberFormatted = "+84" + phoneNumber;
 
             /*Step 2 - setup phone auth options*/
@@ -165,35 +164,67 @@ public class LoginActivity extends AppCompatActivity {
                             .setPhoneNumber(phoneNumberFormatted)       // Phone number to verify
                             .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
                             .setActivity(this)                 // Activity (for callback binding)
-                            .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                            .setCallbacks(
+                                    new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
-                                @Override
-                                public void onVerificationCompleted(@NonNull PhoneAuthCredential credential) {
-                                    // Automatically signed in with the credential
-                                    signInWithPhoneAuthCredential(credential);
-                                }
+                                        @Override
+                                        public void onVerificationCompleted(@NonNull PhoneAuthCredential credential) {
+                                            // This callback will be invoked in two situations:
+                                            // 1 - Instant verification. In some cases the phone number can be instantly
+                                            //     verified without needing to send or enter a verification code.
+                                            // 2 - Auto-retrieval. On some devices Google Play services can automatically
+                                            //     detect the incoming verification SMS and perform verification without
+                                            //     user action.
+                                            //Log.d(TAG, "onVerificationCompleted:" + credential);
 
-                                @Override
-                                public void onVerificationFailed(@NonNull FirebaseException e) {
-                                    Toast.makeText(LoginActivity.this, getString(R.string.verification_failed), Toast.LENGTH_SHORT).show();
-                                    Log.e(TAG, "Verification failed: " + e.getMessage());
-                                }
+                                            System.out.println(TAG);
+                                            System.out.println("onVerificationCompleted");
+                                            System.out.println("signInWithPhoneAuthCredential has been called !");
+                                            signInWithPhoneAuthCredential(credential);
+                                        }
 
-                                @Override
-                                public void onCodeSent(@NonNull String verificationId, @NonNull PhoneAuthProvider.ForceResendingToken token) {
-                                    // SMS verification code has been sent to the provided phone number
-                                    Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
-                                    intent.putExtra("verificationId", verificationId);
-                                    intent.putExtra("phoneNumber", phoneNumber);
-                                    startActivity(intent);
-                                }
 
-                                @Override
-                                public void onCodeAutoRetrievalTimeOut(@NonNull String verificationId) {
-                                    super.onCodeAutoRetrievalTimeOut(verificationId);
-                                    Log.d(TAG, "Auto-retrieval timeout: " + verificationId);
-                                }
-                            })
+
+                                        @Override
+                                        public void onVerificationFailed(@NonNull FirebaseException e) {
+                                            // This callback is invoked in an invalid request for verification is made,
+                                            // for instance if the the phone number format is not valid.
+
+                                            Toast.makeText(LoginActivity.this, getString(R.string.verification_failed), Toast.LENGTH_SHORT).show();
+                                            System.out.println(TAG);
+                                            System.out.println("Error: "+e.getMessage());
+                                            System.out.println(e);
+
+                                        }
+
+                                        @Override
+                                        public void onCodeSent(@NonNull String verificationId,
+                                                               @NonNull PhoneAuthProvider.ForceResendingToken token) {
+                                            // The SMS verification code has been sent to the provided phone number, we
+                                            // now need to ask the user to enter the code and then construct a credential
+                                            // by combining the code with a verification ID.
+
+                                            System.out.println(TAG);
+                                            System.out.println("onCodeSent");
+                                            System.out.println("phone number: " + phoneNumber);
+                                            System.out.println("verification Id: " + verificationId);
+
+                                            Intent intent = new Intent(LoginActivity.this, VerificationActivity.class);
+                                            intent.putExtra("verificationId", verificationId);
+                                            intent.putExtra("phoneNumber", phoneNumber);
+                                            startActivity(intent);
+                                        }
+
+
+                                        @Override
+                                        public void onCodeAutoRetrievalTimeOut(@NonNull String s) {
+                                            super.onCodeAutoRetrievalTimeOut(s);
+                                            System.out.println(TAG);
+                                            System.out.println("onCodeAutoRetrievalTimeOut");
+                                            System.out.println(s);
+                                        }
+                                    }
+                            )          // OnVerificationStateChangedCallbacks
                             .build();/*end Step 2*/
 
             /*Step 3 - setup phone auth provider*/
