@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dacn_murkoff_android.AlarmPage.AlarmPageActivity;
 import com.example.dacn_murkoff_android.Configuration.Constant;
+import com.example.dacn_murkoff_android.EmailPage.EmailPageActivity;
 import com.example.dacn_murkoff_android.HomePage.HomePageActivity;
 import com.example.dacn_murkoff_android.Model.Setting;
 import com.example.dacn_murkoff_android.R;
@@ -72,18 +73,18 @@ public class SettingRecyclerView extends RecyclerView.Adapter<SettingRecyclerVie
                     intent = new Intent(context, AlarmPageActivity.class);
                     context.startActivity(intent);
                     break;
-                case "appearance":
-                    intent = new Intent(context, AppearanceActivity.class);
-                    context.startActivity(intent);
-                    break;
                 case "information":
                     intent = new Intent(context, InformationActivity.class);
                     context.startActivity(intent);
                     break;
+                case "appearance":
+                    intent = new Intent(context, AppearanceActivity.class);
+                    context.startActivity(intent);
+                    break;
                 case "emailUs":
-//                    intent = new Intent(context, EmailPageActivity.class);
-//                    context.startActivity(intent);
-//                    break;
+                    intent = new Intent(context, EmailPageActivity.class);
+                    context.startActivity(intent);
+                    break;
                 case "guide":
 //                    intent = new Intent(context, GuidePageActivity.class);
 //                    context.startActivity(intent);

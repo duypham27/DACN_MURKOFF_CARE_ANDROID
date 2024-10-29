@@ -142,4 +142,12 @@
     <string name="schedule">Schedule</string>
     <string name="confirm">Confirm</string>
     <string name="are_you_sure_about_that">Are you sure about that?</string>
+    <string name="title">Title</string>
+    <string name="description2">Description</string>
+    <string name="content">Content</string>
+    <string name="next">Next</string>
+    <string name="you_are_missing_mandatory_field">You are missing mandatory field !</string>
+    <string name="thank_you_for_using_our_service">Thank you for using our application. To continue, click on Send button, we will contact you as soon as possible !</string>
+    <string name="send">Send</string>
+    <string name="select_application_to_send">Select application to send email</string>
 </resources>
