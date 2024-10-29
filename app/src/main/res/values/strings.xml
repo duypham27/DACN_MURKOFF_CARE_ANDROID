@@ -150,4 +150,24 @@
     <string name="thank_you_for_using_our_service">Thank you for using our application. To continue, click on Send button, we will contact you as soon as possible !</string>
     <string name="send">Send</string>
     <string name="select_application_to_send">Select application to send email</string>
+    <string name="open_with_google_map">Open with google map</string>
+    <string name="medical_examination_guide">Guide to medical examination</string>
+    <string name="medical_examination_procedures">Check-up procedure</string>
+    <string name="note_medical"><![CDATA[Below are guidelines and procedures for customers who book through Umbrella Health]]></string>
+    <string name="note_medical_1"><![CDATA[1. You go to SAIGON-ITO Hospital,  305 D. Le Van Sy, Phuong 1, Tan Binh District, Ho Chi Minh City]]></string>
+    <string name="attention_patient">Patients note</string>
+    <string name="note_attention_1">
+        <b>Note about COVID-19</b>
+        \n * When visiting, patients need to check their temperature as soon as they enter the door
+        \n * In case testing is required, the inpatient and family members will take care of the patient
+    </string>
+    <string name="note_attention_2">
+        <b>Note that patients need to bring identification documents when going to the doctor</b>
+         \n * Health insurance card
+         \n * Life/non-life insurance card
+         \n * Identity card for adults. Birth certificate for children
+    </string>
+    <string name="murkoff_care_support_call_center">Murkoff Care Support Call Center</string>
+    <string name="murkoff_care_phone_number">0899.255.255 - 034.888.888 (6h to 22h)</string>
+
 </resources>

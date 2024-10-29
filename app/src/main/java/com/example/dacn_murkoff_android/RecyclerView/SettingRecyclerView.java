@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.dacn_murkoff_android.AlarmPage.AlarmPageActivity;
 import com.example.dacn_murkoff_android.Configuration.Constant;
 import com.example.dacn_murkoff_android.EmailPage.EmailPageActivity;
+import com.example.dacn_murkoff_android.GuidePage.GuidePageActivity;
 import com.example.dacn_murkoff_android.HomePage.HomePageActivity;
 import com.example.dacn_murkoff_android.Model.Setting;
 import com.example.dacn_murkoff_android.R;
@@ -86,9 +87,9 @@ public class SettingRecyclerView extends RecyclerView.Adapter<SettingRecyclerVie
                     context.startActivity(intent);
                     break;
                 case "guide":
-//                    intent = new Intent(context, GuidePageActivity.class);
-//                    context.startActivity(intent);
-//                    break;
+                    intent = new Intent(context, GuidePageActivity.class);
+                    context.startActivity(intent);
+                    break;
                 case "exit":
                     HomePageActivity.getInstance().exit();
                     break;
