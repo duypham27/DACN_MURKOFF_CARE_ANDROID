@@ -12,11 +12,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dacn_murkoff_android.Configuration.Constant;
 import com.example.dacn_murkoff_android.HomePage.HomePageActivity;
 import com.example.dacn_murkoff_android.Model.Setting;
 import com.example.dacn_murkoff_android.R;
 import com.example.dacn_murkoff_android.SettingsPage.AppointmentHistoryActivity;
 import com.example.dacn_murkoff_android.SettingsPage.InformationActivity;
+import com.example.dacn_murkoff_android.WebPage.WebPageActivity;
 
 import java.util.List;
 
@@ -66,10 +68,10 @@ public class SettingRecyclerView extends RecyclerView.Adapter<SettingRecyclerVie
                     HomePageActivity.getInstance().exit();
                     break;
                 case "aboutUs":
-//                    intent = new Intent(context, WebPageActivity.class);
-//                    intent.putExtra("url", Constant.VIDEO_PATH());
-//                    context.startActivity(intent);
-//                    break;
+                    intent = new Intent(context, WebPageActivity.class);
+                    intent.putExtra("url", Constant.VIDEO_PATH());
+                    context.startActivity(intent);
+                    break;
                 case "information":
                     intent = new Intent(context, InformationActivity.class);
                     context.startActivity(intent);

@@ -83,16 +83,10 @@ public class InformationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_information);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
         setupComponent();
-        showInfo();
+        //showInfo();
         setupEvent();
 
     }
@@ -312,10 +306,7 @@ public class InformationActivity extends AppCompatActivity {
 
     /**
      * Checks if the app has permission to write to device storage
-     *
      * If the app does not has permission then the user will be prompted to grant permissions
-     *
-     * @param activity
      */
     // Storage Permissions
     private static final int REQUEST_EXTERNAL_STORAGE = 1;

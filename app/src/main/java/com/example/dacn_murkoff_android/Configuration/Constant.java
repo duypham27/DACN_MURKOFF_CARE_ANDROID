@@ -26,4 +26,10 @@ public class Constant {
     {
         return "http://localhost/DACN_API/";
     }
+
+    public static String VIDEO_PATH()
+    {
+        return "https://www.youtube.com/watch?v=rnVOM_WJmN8";
+    }
+
 }
