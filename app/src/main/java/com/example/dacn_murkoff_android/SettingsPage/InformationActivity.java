@@ -336,10 +336,7 @@ public class InformationActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * @author Phong-Kaster
-     * open Gallery To Pick Photo
-     */
+    /** Open Gallery To Pick Photo **/
     private final ActivityResultLauncher<Intent> openGalleryToPickPhoto = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
                 @Override
