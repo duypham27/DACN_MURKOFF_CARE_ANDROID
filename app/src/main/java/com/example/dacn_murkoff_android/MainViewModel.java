@@ -17,9 +17,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-/**
- * This function only get patient's profile when Access Token exists in application
- */
+/** This function only get patient's profile when Access Token exists in application **/
 public class MainViewModel extends ViewModel {
     private final String TAG = "MainViewModel";
     private MutableLiveData<PatientProfile> response = new MutableLiveData<>();
@@ -28,10 +26,7 @@ public class MainViewModel extends ViewModel {
         return response;
     }
 
-    /**
-     * @author Phong-Kaster
-     * @param headers is the JWT Token which is attached to HTTPS headers
-     */
+    /** Headers is the JWT Token which is attached to HTTPS headers **/
     public void readPersonalInformation(Map<String, String> headers){
         /*Step 1*/
         Retrofit service = HTTPService.getInstance();
