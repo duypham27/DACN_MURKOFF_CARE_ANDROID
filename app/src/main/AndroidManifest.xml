@@ -82,10 +82,10 @@
             android:name=".HomePage.HomePageFragment"
             android:exported="false" />
         <activity
-            android:name=".LoginPage.GithubAuthActivity"
+            android:name=".HomePage.HomePageActivity"
             android:exported="false" />
         <activity
-            android:name=".HomePage.HomePageActivity"
+            android:name=".LoginPage.GithubAuthActivity"
             android:exported="false" />
         <activity
             android:name=".LoginPage.VerificationActivity"

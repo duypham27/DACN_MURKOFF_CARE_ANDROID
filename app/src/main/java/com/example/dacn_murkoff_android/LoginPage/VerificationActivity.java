@@ -177,8 +177,6 @@ public class VerificationActivity extends AppCompatActivity {
         btnSendOTPCode.setOnClickListener(view -> {
             /*Step 1 - get verificationCode and create credential*/
             String verificationCode = editOTP.getText().toString();
-            verificationCode = "123456";
-
             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, verificationCode);
 
 

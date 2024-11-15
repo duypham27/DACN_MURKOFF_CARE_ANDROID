@@ -103,7 +103,7 @@
     <string name="you_will_get_notification_as_soon_as_your_turn">You will receive a notification when it\'s your turn</string>
     <string name="notifications">Notifications</string>
     <string name="mark_all_as_read">Mark all as read</string>
-    <string name="murkoff_care_is_running_in_background">Murkoff Care is running in background</string>
+    <string name="murkoff_care_is_running_in_background">MurkOff Care is running in background</string>
     <string name="it_is_your_turn">It is your turn. Be ready !</string>
     <string name="appointment_information">Appointment Information</string>
     <string name="default_location">Area A, 1st floor, room 112</string>
@@ -153,7 +153,7 @@
     <string name="open_with_google_map">Open with google map</string>
     <string name="medical_examination_guide">Guide to medical examination</string>
     <string name="medical_examination_procedures">Check-up procedure</string>
-    <string name="note_medical"><![CDATA[Below are guidelines and procedures for customers who book through Umbrella Health]]></string>
+    <string name="note_medical"><![CDATA[Below are guidelines and procedures for customers who book through MurkOff Care]]></string>
     <string name="note_medical_1"><![CDATA[1. You go to SAIGON-ITO Hospital,  305 D. Le Van Sy, Phuong 1, Tan Binh District, Ho Chi Minh City]]></string>
     <string name="attention_patient">Patients note</string>
     <string name="note_attention_1">
@@ -169,5 +169,6 @@
     </string>
     <string name="murkoff_care_support_call_center">Murkoff Care Support Call Center</string>
     <string name="murkoff_care_phone_number">0899.255.255 - 034.888.888 (6h to 22h)</string>
+    <string name="my_phone_num">123456789</string>
 
 </resources>

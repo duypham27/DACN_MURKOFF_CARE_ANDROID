@@ -231,6 +231,12 @@ public class LoginActivity extends AppCompatActivity {
             PhoneAuthProvider.verifyPhoneNumber(options);
         });/*end BUTTON GET CONFIRM CODE*/
 
+        btnGoogleAuth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleGoogleAuth();
+            }
+        });
 
 
         /*BUTTON GITHUB LOGIN*/
@@ -433,6 +439,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
     /*END BUTTON GOOGLE LOGIN*/
+
 
 
 
