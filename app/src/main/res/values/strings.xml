@@ -4,7 +4,7 @@
     <string name="enter_phone_number_here">Enter phone number here</string>
     <string name="enter_otp_code">Enter OTP Code</string>
     <string name="send_otp_code">Send OTP Code</string>
-    <string name="i_didn_t_receive_otp_code">I didn\'t receive OTP code</string>
+    <string name="i_didn_t_receive_otp_code">Didn\'t receive OTP code ? </string>
     <string name="murkoff_corporation">MURKOFF CORPORATION</string>
     <string name="login_with_phone_number">Login with phone number</string>
     <string name="vietnam_phone_prefix">+84</string>
@@ -20,7 +20,7 @@
     <string name="service">Service</string>
     <string name="speciality">Speciality</string>
     <string name="doctor">Doctor</string>
-    <string name="default_datetime">2022-11-24 10:02:43</string>
+    <string name="default_datetime">2024-12-22 10:02:43</string>
     <string name="success">Success</string>
     <string name="ok">OK</string>
     <string name="add_account_info_successfully">Add Account Info Successfully</string>
@@ -34,7 +34,7 @@
     <string name="co_xuong_khop">Cơ Xương Khớp</string>
     <string name="default_datetime2">Date: 30-10-2024</string>
     <string name="default_speciality">General</string>
-    <string name="default_doctor_name">Duy Phạm</string>
+    <string name="default_doctor_name">Doctor Duy Phạm</string>
     <string name="default_reason">Periodic health examination</string>
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
@@ -170,5 +170,42 @@
     <string name="murkoff_care_support_call_center">Murkoff Care Support Call Center</string>
     <string name="murkoff_care_phone_number">0899.255.255 - 034.888.888 (6h to 22h)</string>
     <string name="my_phone_num">123456789</string>
+    <string name="resend_otp">RESEND OTP</string>
+    <string name="all_rights_reserved_by_murkoff">All Rights Reserved By MurkOff</string>
+    <string name="none">None</string>
+    <string name="type">Type</string>
+    <string name="times">Times</string>
+    <string name="purpose">Purpose</string>
+    <string name="instruction">Instruction</string>
+    <string name="repeat">Repeat</string>
+    <string name="time">Time</string>
+    <string name="default_treatment_name">Name: Thực phẩm bổ sung MurkOffBoost</string>
+    <string name="default_treatment_repeat_days">Repeat: daily</string>
+    <string name="default_treatment_repeat_time">Time: 10:00 AM</string>
+    <string name="default_treatment_type">Type: Uống</string>
+    <string name="default_treatment_times">Times: 9</string>
+    <string name="default_treatment_purpose">Purpose: Bổ sung Vitamin</string>
+    <string name="default_treatment_instruction">Instruction: Uống trước khi ăn và trước đi ngủ 2 viên/lần</string>
+    <string name="medical_record_information">Medical Record Information</string>
+    <string name="appointment_reason">Appoitment reason</string>
+    <string name="statusBefore">Condition before treatment</string>
+    <string name="default_status_before">Condition after treatment</string>
+    <string name="statusAfter">Condition after treatment</string>
+    <string name="reason">Diagnostic</string>
+    <string name="description">Description:</string>
+    <string name="you">You</string>
+    <string name="now">Now</string>
+    <string name="what_do_you_want_to_search_today">What do you want to search today ?</string>
+    <string name="all">All</string>
+    <string name="service_information">Service Overview</string>
+    <string name="create_booking">Create Booking</string>
+    <string name="medical_test_examination">Medical Test Examination</string>
+    <string name="speciality_examination">Speciality Examination</string>
+    <string name="general_examination">General Examination</string>
+    <string name="heart_examination">Heart Examination</string>
+    <string name="pregnant_examination">Pregnant Examination</string>
+    <string name="tooth_examination">Tooth Examination</string>
+    <string name="eye_examination">Eye Examination</string>
+    <string name="celsius" translatable="false">°C</string>
 
 </resources>

@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    android:background="@drawable/loginbackground"
+    android:background="@color/colorThemeMurkoff"
     tools:context=".LoginPage.VerificationActivity">
 
     <!--MURKOFF LOGO-->
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/your_health_our_business"
-            android:textColor="@color/white"
+            android:textColor="@color/textColorWhite"
             android:textSize="14sp"
             android:textStyle="italic"
             tools:ignore="RtlSymmetry" />
@@ -61,7 +61,6 @@
         android:textSize="16sp"
         android:textColor="@color/black"
         android:drawablePadding="20dp"
-        android:autofillHints=""
         android:background="@drawable/input_style"
         android:drawableStart="@drawable/ic_key"
         android:hint="@string/enter_otp_code"
@@ -81,14 +80,38 @@
         android:textAllCaps="false"
         style="@style/button_style_info"/>
 
-    <TextView
-        android:id="@+id/tvSendOTPAgain"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:textColor="@color/textColorWhite"
-        android:layout_gravity="center"
-        android:text="@string/i_didn_t_receive_otp_code"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvSendOTPAgain"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp"
+            android:padding="5dp"
+            android:textColor="@color/textColorWhite"
+            android:layout_gravity="center"
+            android:text="@string/i_didn_t_receive_otp_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvSendOTPAgainClick"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:padding="5dp"
+            android:layout_marginStart="4dp"
+            android:textColor="@color/colorRed"
+            android:layout_gravity="center"
+            android:text="@string/resend_otp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
 
 </LinearLayout>

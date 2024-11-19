@@ -18,7 +18,7 @@
 
     <TextView
         android:padding="16dp"
-        android:text="All Rights Reserved By Murkoff"
+        android:text="@string/all_rights_reserved_by_murkoff"
         android:textSize="12sp"
         android:textColor="@color/black"
         android:textAlignment="center"

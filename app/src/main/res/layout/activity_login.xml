@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="20dp"
     android:orientation="vertical"
-    android:background="@drawable/loginbackground"
+    android:background="@color/colorThemeMurkoff"
     tools:context=".LoginPage.LoginActivity">
 
     <!--MURKOFF LOGO-->
@@ -82,7 +82,6 @@
             android:inputType="phone"
             android:layout_marginHorizontal="20dp"
             android:hint="@string/enter_phone_number_here"
-            android:text="@string/my_phone_num"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="12sp"/>

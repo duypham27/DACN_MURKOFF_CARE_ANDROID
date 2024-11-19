@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".LoginPage.GithubAuthActivity"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/colorThemeMurkoff">
 
     <ImageView
         android:layout_width="150dp"

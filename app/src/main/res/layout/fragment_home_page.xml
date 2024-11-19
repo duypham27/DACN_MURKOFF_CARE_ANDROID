@@ -32,7 +32,7 @@
                 android:id="@+id/txtDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Thursday, 22/12/2022"
+                android:text="Tuesday, 24/12/2024"
                 android:textColor="@color/textColorBlack"
                 android:textSize="11sp"
                 android:textStyle="bold" />

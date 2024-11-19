@@ -25,6 +25,21 @@
         android:theme="@style/Theme.DACN_MURKOFF_ANDROID"
         tools:targetApi="31">
         <activity
+            android:name=".BookingPage.BookingPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ServicePage.ServicePageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchPage.SearchPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecordPage.RecordPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TreatmentPage.TreatmentPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".GuidePage.GuidePageActivity"
             android:exported="false" />
         <activity
@@ -89,10 +104,14 @@
             android:exported="false" />
         <activity
             android:name=".LoginPage.VerificationActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".LoginPage.LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

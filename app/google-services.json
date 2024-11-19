@@ -1,26 +1,44 @@
 {
   "project_info": {
-    "project_number": "225389954167",
-    "project_id": "dacn-murkoff-android",
-    "storage_bucket": "dacn-murkoff-android.appspot.com"
+    "project_number": "1073765669887",
+    "project_id": "dacn-murkoff-care-android",
+    "storage_bucket": "dacn-murkoff-care-android.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:225389954167:android:57c63c9291fae0dd58b272",
+        "mobilesdk_app_id": "1:1073765669887:android:a2d156ec83c4d6602ae5ca",
         "android_client_info": {
-          "package_name": "com.example.dacn_murkoff_android"
+          "package_name": "com.example.dacn_murkoff_care_android"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1073765669887-kppmeh84ssgc9onu8k994r9dnnp24h7n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dacn_murkoff_care_android",
+            "certificate_hash": "940f171329f54f24e7e7724720c5ecf7c2561613"
+          }
+        },
+        {
+          "client_id": "1073765669887-si42q57c7o72m7lgtorrl4tn7jnbqosa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyBcTmIhYFyrBBtbO-8sOznhw26gC3bbd_w"
+          "current_key": "AIzaSyDH5kgtSMjuyCCXDf6lltLQ62t4LhLMPh4"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1073765669887-si42q57c7o72m7lgtorrl4tn7jnbqosa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

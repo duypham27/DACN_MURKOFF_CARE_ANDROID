@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.dacn_murkoff_android"
+    namespace = "com.example.dacn_murkoff_care_android"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.dacn_murkoff_android"
+        applicationId = "com.example.dacn_murkoff_care_android"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -52,6 +52,8 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
+    implementation ("com.google.firebase:firebase-messaging:23.1.1")  // Optional if you plan to send notifications via FCM
+
 
     //Auth Google Login
     implementation ("com.google.android.gms:play-services-auth:21.2.0")
