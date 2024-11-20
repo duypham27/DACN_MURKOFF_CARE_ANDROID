@@ -69,7 +69,7 @@ public class SettingsFragment extends Fragment {
     /** SETUP RECYCLE VIEW **/
     private void setupRecyclerView()
     {
-        Setting setting0 = new Setting(R.drawable.murkoff_logo, "aboutUs", getString(R.string.about_us) );
+        Setting setting0 = new Setting(R.drawable.ic_murkoff, "aboutUs", getString(R.string.about_us) );
         Setting setting1 = new Setting(R.drawable.ic_appointment_history, "appointmentHistory", getString(R.string.appointment_history) );
         Setting setting2 = new Setting(R.drawable.ic_booking_history, "bookingHistory", getString(R.string.booking_history) );
         Setting setting3 = new Setting(R.drawable.ic_reminder, "reminder", context.getString(R.string.reminder));

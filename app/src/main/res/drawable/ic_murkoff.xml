@@ -1,0 +1,30 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="20dp"
+    android:height="20dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    <!-- Nền màu xanh -->
+    <path
+        android:fillColor="#004BA0"
+        android:pathData="M0,0h100v100h-100z" />
+
+    <!-- Hình chữ nhật ngang trên -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M20,20h60v10h-60z" />
+
+    <!-- Nét trái của chữ "M" -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M20,30h10v50h-10z" />
+
+    <!-- Nét phải của chữ "M" -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M70,30h10v50h-10z" />
+
+    <!-- Nét thẳng giữa của chữ "M" -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M45,30h10v50h-10z" />
+</vector>

@@ -238,7 +238,7 @@ public class HomePageFragment extends Fragment {
     {
         Handbook handbook0 = new Handbook(
                 "https://vignette.wikia.nocookie.net/outlast/images/c/cc/Murkoff_Corp_Logo.jpg/revision/latest?cb=20140308195505",
-                "MurkOff Care - Sức khoẻ của bạn, Sứ mệnh của chúng tôi",
+                "MurkOff Care - Sức khoẻ của bạn, sứ mệnh của chúng tôi",
                 "https://www.youtube.com/watch?v=RGNRtwCaY4g");
 
         Handbook handbook1 = new Handbook(
@@ -352,6 +352,8 @@ public class HomePageFragment extends Fragment {
         LinearLayoutManager manager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerViewHandbook.setLayoutManager(manager);
     }
+
+
 
 
 
