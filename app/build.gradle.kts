@@ -52,7 +52,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
-    implementation ("com.google.firebase:firebase-messaging:23.1.1")  // Optional if you plan to send notifications via FCM
+    implementation("com.google.firebase:firebase-messaging:23.1.1")  // Optional if you plan to send notifications via FCM
 
 
     //Auth Google Login
@@ -71,7 +71,11 @@ dependencies {
     //CircleImageView from hdodenhof
     implementation ("de.hdodenhof:circleimageview:3.1.0")
 
-    // icon badge - is used to set number on the top-right corner of icon
+    // Icon badge - is used to set number on the top-right corner of icon
     implementation ("com.google.android.material:material:1.8.0-alpha02")
+
+    // Recycler view decorator
+    implementation ("androidx.recyclerview:recyclerview:1.2.1")
+    implementation ("it.xabaras.android:recyclerview-swipedecorator:1.4")
 
 }

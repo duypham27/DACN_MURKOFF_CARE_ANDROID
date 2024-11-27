@@ -36,7 +36,7 @@ import java.util.Map;
 
 public class ServicePageActivity extends AppCompatActivity {
 
-    private final String TAG = "Service-page Activity";
+    private final String TAG = "Service_Page_Activity";
     private String serviceId;
 
     private GlobalVariable globalVariable;
@@ -91,7 +91,7 @@ public class ServicePageActivity extends AppCompatActivity {
         doctorRecyclerView = findViewById(R.id.doctorRecyclerView);
     }
 
-
+    /** SETTING UP VIEWMODEL **/
     private void setupViewModel()
     {
         ServicePageViewModel viewModel = new ViewModelProvider(this).get(ServicePageViewModel.class);
@@ -189,7 +189,7 @@ public class ServicePageActivity extends AppCompatActivity {
     }
 
 
-    /** SETTING UP EVENT **/
+
     private void printServiceInformation(Service service)
     {
         String image = Constant.UPLOAD_URI() + service.getImage();
@@ -207,6 +207,8 @@ public class ServicePageActivity extends AppCompatActivity {
         wvwDescription.loadDataWithBaseURL(null, description, "text/HTML", "UTF-8", null);
     }
 
+
+    /** SETTING UP EVENT **/
     private void setupEvent()
     {
         btnBack.setOnClickListener(view->finish());
@@ -221,8 +223,8 @@ public class ServicePageActivity extends AppCompatActivity {
 
 
     /** NOTE:
-    List is list<doctor>
-     **/
+     * List is list<doctor>
+     */
     private void setupRecyclerView(List<Doctor> list)
     {
         DoctorRecyclerView doctorAdapter = new DoctorRecyclerView(this, list);

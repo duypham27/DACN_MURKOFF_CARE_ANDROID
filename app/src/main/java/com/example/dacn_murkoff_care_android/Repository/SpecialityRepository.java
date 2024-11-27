@@ -18,7 +18,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class SpecialityRepository {
-    private final String TAG = "SpecialityRepository";
+    private final String TAG = "Speciality_Repository";
 
     /*ANIMATION*/
     private final MutableLiveData<Boolean> animation = new MutableLiveData<>();

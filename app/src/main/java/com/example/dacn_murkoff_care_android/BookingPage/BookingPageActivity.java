@@ -30,7 +30,7 @@ public class BookingPageActivity extends AppCompatActivity {
 
     private void setupBookingFragment1()
     {
-        String fragmentTag = "BookingFragment1";
+        String fragmentTag = "Booking_Fragment1";
         Fragment fragment = new BookingFragment1();
 
 

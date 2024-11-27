@@ -35,8 +35,6 @@ public class GuidePageActivity extends AppCompatActivity {
 
     }
 
-
-
     private void setupComponent() {
         btnBack = findViewById(R.id.btnBack);
         wvwLocation = findViewById(R.id.wvwDescription);
@@ -64,7 +62,7 @@ public class GuidePageActivity extends AppCompatActivity {
         String location =
                 "<html>\n" +
                         "   <body>\n" +
-                        "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.3614347512976!2d106.76861713956941!3d10.783605143395203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317525d4fb4d7abb%3A0xed06665f8a047451!2sLe%20Van%20Thinh%20Hospital!5e0!3m2!1sen!2s!4v1669215482921!5m2!1sen!2s\" " +
+                        "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.775278820185!2d106.67601016481703!3d10.76882051707841!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f49a8134407%3A0x8b3ac844e0a002a4!2sChildrens+Hospital+2!5e0!3m2!1sen!2s!4v1698523376882!5m2!1sen!2s\" " +
                         "width=\"600\" height=\"450\" \n" +
                         "style=\"border:0;\" allowfullscreen=\"\"\n" +
                         "loading=\"lazy\" \n" +
@@ -96,7 +94,7 @@ public class GuidePageActivity extends AppCompatActivity {
 
         /*BUTTON OPEN WITH GOOGLE MAP*/
         btnOpenWithGoogleMap.setOnClickListener(view->{
-            Uri uri = Uri.parse("https://www.google.com/maps?ll=10.782762,106.769197&z=16&t=m&hl=en&gl=US&mapclient=embed&cid=17079451197372658769");
+            Uri uri = Uri.parse("https://www.google.com/maps?ll=10.7805348,106.7031411&z=16&t=m&hl=en&gl=US&mapclient=embed&cid=0x31752f49a8134407%3A0x8b3ac844e0a002a4");
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
             finish();

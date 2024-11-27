@@ -91,11 +91,6 @@ public class ButtonRecyclerView extends RecyclerView.Adapter<ButtonRecyclerView.
                     intent.putExtra("serviceId", "24" );
                     context.startActivity(intent);
                     break;
-//                case "covid19":
-//                    intent = new Intent(context, ServicePageActivity.class);
-//                    intent.putExtra("serviceId", "22" );
-//                    context.startActivity(intent);
-//                    break;
             }
         });
     }

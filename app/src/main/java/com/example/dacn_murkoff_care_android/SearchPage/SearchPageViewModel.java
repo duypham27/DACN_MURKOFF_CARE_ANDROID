@@ -73,7 +73,7 @@ public class SearchPageViewModel extends ViewModel {
     public void specialityReadAll(Map<String, String> headers, Map<String, String> parameters)
     {
         specialityReadAll = specialityRepository.readAll(headers, parameters);
-        animation = doctorRepository.getAnimation();
+        animation = specialityRepository.getAnimation();
     }
 
 

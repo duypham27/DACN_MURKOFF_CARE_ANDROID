@@ -29,6 +29,7 @@ public class BookingPageViewModel extends ViewModel {
         return animation;
     }
 
+
     /** INSTANTIATE REPOSITORY **/
     public void instantiate()
     {
@@ -50,7 +51,8 @@ public class BookingPageViewModel extends ViewModel {
         }
     }
 
-    /************************SERVICE READ BY ID***************************/
+
+    /** SERVICE READ BY ID **/
     public MutableLiveData<ServiceReadByID> getServiceReadByIdResponse() {
         if( serviceReadByIdResponse == null)
         {
@@ -81,7 +83,7 @@ public class BookingPageViewModel extends ViewModel {
     }
 
 
-    /** BOOKING PHOTO - READ ALL***************************/
+    /** BOOKING PHOTO - READ ALL **/
     private MutableLiveData<BookingPhotoReadAll> bookingPhotoReadAllResponse;
     public MutableLiveData<BookingPhotoReadAll> getBookingPhotoReadAllResponse(){
         if( bookingPhotoReadAllResponse == null )
@@ -95,6 +97,7 @@ public class BookingPageViewModel extends ViewModel {
         bookingPhotoReadAllResponse = bookingPhotoRepository.readAll(header, bookingId);
         animation = bookingPhotoRepository.getAnimation();
     }
+
 
     /** DOCTOR - READ BY ID **/
     private MutableLiveData<DoctorReadByID> doctorReadById = new MutableLiveData<>();

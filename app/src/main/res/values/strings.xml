@@ -123,7 +123,7 @@
     <string name="watch_medical_record">Watch Medical Record</string>
     <string name="watch_medical_treatment">Watch Medical Treatment</string>
     <string name="you_can_read_again_in_settings"><![CDATA[You can go to Personal -> Medical History to review the information later]]></string>
-    <string name="default_service_name">Xét nghiệm định lượng kháng thể SARS-CoV-2</string>
+    <string name="default_service_name">Xét nghiệm công thức máu toàn phần (CBC - Complete Blood Count)</string>
     <string name="default_booking_name">Booking name: Phạm Bạch An Duy</string>
     <string name="default_booking_phone">Booking patient: 0899.255.255</string>
     <string name="default_patient_name">Patient name: Phạm Bạch An Duy</string>
@@ -154,10 +154,10 @@
     <string name="medical_examination_guide">Guide to medical examination</string>
     <string name="medical_examination_procedures">Check-up procedure</string>
     <string name="note_medical"><![CDATA[Below are guidelines and procedures for customers who book through MurkOff Care]]></string>
-    <string name="note_medical_1"><![CDATA[1. You go to SAIGON-ITO Hospital,  305 D. Le Van Sy, Phuong 1, Tan Binh District, Ho Chi Minh City]]></string>
+    <string name="note_medical_1"><![CDATA[1. You go to Children\'s Hospital 2,  14 Road Ly Tu Trong, Phuong Ben Nghe, District 1, Ho Chi Minh City]]></string>
     <string name="attention_patient">Patients note</string>
     <string name="note_attention_1">
-        <b>Note about COVID-19</b>
+        <b>Note about MEASLES</b>
         \n * When visiting, patients need to check their temperature as soon as they enter the door
         \n * In case testing is required, the inpatient and family members will take care of the patient
     </string>
@@ -207,5 +207,31 @@
     <string name="tooth_examination">Tooth Examination</string>
     <string name="eye_examination">Eye Examination</string>
     <string name="celsius" translatable="false">°C</string>
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bookingName">Booking personal name (Mandatory)</string>
+    <string name="bookingPhone">Booking personal phone (Mandatory)</string>
+    <string name="patientName">Patient name (Mandatory)</string>
+    <string name="appointmentDate">Appointment date (Mandatory)</string>
+    <string name="appointmentTime">Appointment time (Mandatory)</string>
+    <string name="please_fulfill_mandatory_information">Please fill in the information completely to save time for examination procedures</string>
+    <string name="note">Note</string>
+    <string name="note_1">1. The information you provide will be used as medical examination records, when filling in your information, please:</string>
+    <string name="note_2">\t* Specify the first and last name, capitalize the first letter, for example: <b>Pham Bach An Duy</b></string>
+    <string name="note_3">\t* Fill it out completely and correctly and please double check the information before pressing Confirm</string>
+    <string name="note_4">2. Please follow the epidemic prevention regulations (wearing a mask, disinfecting, declaring the epidemiology) when visiting the clinic.</string>
+    <string name="default_appointment_time">12:00</string>
+    <string name="with">with</string>
+    <string name="you_do_not_fill_mandatory_field_try_again">You have not provided all required information. Please check again !</string>
+    <string name="note_6">To make the examination process faster, we encourage patients to provide more medical records, treatment protocols, prescriptions, etc. that the patient has used before.</string>
+    <string name="booking_successfully">Successful Booking!</string>
+    <string name="if_it_is_the_first_time_you_have_exam">If you do not know the medical examination process at MurkOff Care. Click the button below to view the instructions!</string>
+    <string name="how_to_exam_in_murkoff_care">Guide to medical examination in MurkOff Care</string>
+    <string name="verified">Verified</string>
+    <string name="doctor_information">Doctor Information</string>
+    <string name="doctor_name">Doctor:</string>
+    <string name="speciality_name">Speciality:</string>
+    <string name="phone_number_2">Phone number:</string>
+    <string name="default_phone_number">123456789</string>
+    <string name="working_process">Working process:</string>
 </resources>

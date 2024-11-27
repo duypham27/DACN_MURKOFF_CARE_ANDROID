@@ -45,7 +45,7 @@ import retrofit2.Retrofit;
 
 public class AppointmentPageInfoActivity extends AppCompatActivity {
 
-    private final String TAG = "Appointment-page Info Activity";
+    private final String TAG = "Appointment_Page_Info_Activity";
     private Map<String, String> header;
 
     private Dialog dialog;
@@ -147,9 +147,9 @@ public class AppointmentPageInfoActivity extends AppCompatActivity {
     }
 
     /**
-     SETTING UP VIEW MODEL
-     If the user appointment is not PROCESSING, we hide recycler view appointment queue
-     And never request current appointment queue.
+     * SETTING UP VIEW MODEL
+     * If the user appointment is not PROCESSING, we hide recycler view appointment queue
+     * And never request current appointment queue.
      **/
     private void setupViewModel() {
         viewModel = new ViewModelProvider(this).get(AppointmentPageViewModel.class);

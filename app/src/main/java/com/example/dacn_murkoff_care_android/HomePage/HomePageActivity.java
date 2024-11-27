@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -15,6 +16,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.dacn_murkoff_care_android.AppointmentPage.AppointmentPageFragment;
+import com.example.dacn_murkoff_care_android.Configuration.HTTPRequest;
+import com.example.dacn_murkoff_care_android.Configuration.HTTPService;
+import com.example.dacn_murkoff_care_android.Container.NotificationReadAll;
 import com.example.dacn_murkoff_care_android.Helper.Dialog;
 import com.example.dacn_murkoff_care_android.Helper.GlobalVariable;
 import com.example.dacn_murkoff_care_android.LoginPage.LoginActivity;
@@ -23,12 +27,19 @@ import com.example.dacn_murkoff_care_android.R;
 import com.example.dacn_murkoff_care_android.SettingsPage.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.json.JSONObject;
+
 import java.lang.ref.WeakReference;
 import java.util.Map;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class HomePageActivity extends AppCompatActivity {
 
-    private final String TAG = "HomePage Activity";
+    private final String TAG = "Home_Page_Activity";
     private Dialog dialog;
     private GlobalVariable globalVariable;
 
@@ -47,13 +58,8 @@ public class HomePageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home_page);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        weakActivity = new WeakReference<>(HomePageActivity.this);
 
         /*Enable HomeFragment by default*/
         fragment = new HomePageFragment();
@@ -133,8 +139,8 @@ public class HomePageActivity extends AppCompatActivity {
 //    }
 
 
-    /**
-     * activate a fragment right away
+    /** NOTE:
+     * Activate a fragment right away
      * */
     public void enableFragment(Fragment fragment, String fragmentTag)
     {
@@ -176,7 +182,64 @@ public class HomePageActivity extends AppCompatActivity {
         dialog.btnCancel.setOnClickListener(view-> dialog.close());
     }
 
-    /**
+
+    /** NOTE:
+     * This function sets number on the right-top on notification icon
+     * Which lays on Bottom Navigation View
+     */
+    public void setNumberOnNotificationIcon()
+    {
+        /*Step 1 - setup Retrofit*/
+        Retrofit service = HTTPService.getInstance();
+        HTTPRequest api = service.create(HTTPRequest.class);
+
+        /*Step 2 - prepare header*/
+        Map<String, String> header = globalVariable.getHeaders();
+
+        /*Step 3*/
+        Call<NotificationReadAll> container = api.notificationReadAll(header);
+
+        /*Step 4*/
+        container.enqueue(new Callback<NotificationReadAll>() {
+            @Override
+            public void onResponse(@NonNull Call<NotificationReadAll> call, @NonNull Response<NotificationReadAll> response) {
+                /*if successful, update the number of unread notification*/
+                if(response.isSuccessful())
+                {
+                    NotificationReadAll content = response.body();
+                    assert content != null;
+                    /*update the number of unread notification*/
+                    int quantityUnread = content.getQuantityUnread();
+                    bottomNavigationView
+                            .getOrCreateBadge(R.id.shortcutNotification)
+                            .setNumber(quantityUnread);
+                }
+                /*if fail, show exception*/
+                if(response.errorBody() != null)
+                {
+                    System.out.println(response);
+                    try
+                    {
+                        JSONObject jObjError = new JSONObject(response.errorBody().string());
+                        System.out.println( jObjError );
+                    }
+                    catch (Exception e) {
+                        System.out.println(TAG);
+                        System.out.println("Exception: " + e.getMessage() );
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<NotificationReadAll> call, @NonNull Throwable t) {
+                System.out.println(TAG);
+                System.out.println("setNumberOnNotificationIcon - error: " + t.getMessage());
+            }
+        });
+    }
+
+
+    /** NOTE:
      * Exit the application
      * This function is called in settingRecyclerView
      */
@@ -197,7 +260,5 @@ public class HomePageActivity extends AppCompatActivity {
         finish();
         startActivity(intent);
     }
-
-
 
 }

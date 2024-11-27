@@ -3,6 +3,7 @@ package com.example.dacn_murkoff_care_android.SearchPage;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
@@ -94,10 +95,8 @@ public class SearchPageActivity extends AppCompatActivity {
         Tooltip.setLocale(this, sharedPreferences);
     }
 
-    /**
-     * @since 21-11-2022
-     * set options for spinner
-     */
+
+    /** SET OPTIONS FOR SPINNER **/
     private void setupFilterSpinner()
     {
         List<Option> filterOptions = globalVariable.getFilterOptions();
@@ -115,7 +114,7 @@ public class SearchPageActivity extends AppCompatActivity {
         });
     }
 
-    /** SETTING UP EVENT **/
+    /** SETUP EVENT **/
     private void setupEvent()
     {
         /*BUTTON BACK*/
@@ -147,6 +146,8 @@ public class SearchPageActivity extends AppCompatActivity {
         });
     }
 
+
+    /** SETUP VIEWMODEL **/
     private void setupViewModel()
     {
         viewModel = new ViewModelProvider(this).get(SearchPageViewModel.class);
@@ -168,16 +169,21 @@ public class SearchPageActivity extends AppCompatActivity {
         /** SPECIALITY **/
         paramsSpeciality.put("length", "100");// day la mot params co the truyen trong API nay
         viewModel.specialityReadAll(header, paramsSpeciality);
-        viewModel.getSpecialityReadAll().observe(this, response->{
-            int result = response.getResult();
-            if(result == 1)
-            {
-                List<Speciality> list = response.getData();
-                setupRecyclerViewSpeciality(list);
+        viewModel.getSpecialityReadAll().observe(this, response -> {
+            if (response != null) {
+                int result = response.getResult();
+                if (result == 1) {
+                    List<Speciality> list = response.getData();
+                    setupRecyclerViewSpeciality(list);
+                }
+            } else {
+                // Xử lý lỗi khi response là null
+                Log.e(TAG, "Response is null for specialityReadAll");
             }
         });
 
-        /* *****************SERVICE******************/
+
+        /** SERVICE **/
         paramsService.put("length", "100");// day la mot params co the truyen trong API nay
         viewModel.serviceReadAll(header, paramsService);
         viewModel.getServiceReadAllResponse().observe(this, response->{
@@ -233,6 +239,7 @@ public class SearchPageActivity extends AppCompatActivity {
         doctorRecyclerView.setLayoutManager(manager);
     }
 
+
     /** List is the list of speciality **/
     private void setupRecyclerViewSpeciality(List<Speciality> list)
     {
@@ -242,6 +249,7 @@ public class SearchPageActivity extends AppCompatActivity {
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         specialityRecyclerView.setLayoutManager(manager);
     }
+
 
     /** List is the list of service **/
     private void setupRecyclerViewService(List<Service> list)

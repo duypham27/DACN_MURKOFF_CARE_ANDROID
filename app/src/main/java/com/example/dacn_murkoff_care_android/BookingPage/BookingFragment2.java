@@ -1,33 +1,36 @@
 package com.example.dacn_murkoff_care_android.BookingPage;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Canvas;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.provider.MediaStore;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.example.dacn_murkoff_care_android.Configuration.HTTPRequest;
 import com.example.dacn_murkoff_care_android.Configuration.HTTPService;
@@ -41,13 +44,12 @@ import com.example.dacn_murkoff_care_android.R;
 import com.example.dacn_murkoff_care_android.RecyclerView.BookingPhotoRecyclerView;
 import com.google.android.material.snackbar.Snackbar;
 
-
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -57,152 +59,140 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class BookingPagePhotoActivity extends AppCompatActivity {
 
-    private final String TAG = "Booking_Page_Photo_Activity";
+/** NOTE:
+ * Road: BookingFragment1 -> BookingFragment2 -> BookingFragment3
+ */
+
+public class BookingFragment2 extends Fragment {
+
+    private final String TAG = "Booking_Fragment2";
     private String bookingId;
-    private String bookingStatus;
-    private ImageButton btnBack;
+
+    private AppCompatButton btnNext;
+    private AppCompatButton btnUpload;
+    private RecyclerView recyclerView;
+    private BookingPhotoRecyclerView adapter;
+
+    private LinearLayout layout;
+    private Context context;
+    private Activity activity;
 
     private Map<String, String> header;
+    private GlobalVariable globalVariable;
     private LoadingScreen loadingScreen;
     private Dialog dialog;
 
-
-    private BookingPhotoRecyclerView bookingPhotoAdapter;
-    private RecyclerView recyclerView;
-    private LinearLayout layout;
+    private BookingPageViewModel viewModel;
     private List<Photo> list;
-
-    private AppCompatButton btnUpload;
     private int photoId;
 
-    private GlobalVariable globalVariable;
-
-    private BookingPageViewModel viewModel;
-
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_booking_page_photo);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_booking2, container, false);
 
-        setupComponent();
+        setupComponent(view);
         setupViewModel();
         setupEvent();
 
+        return view;
     }
 
 
-    private void setupComponent() {
-        if (getIntent().getStringExtra("bookingId") != null) {
-            bookingId = getIntent().getStringExtra("bookingId");
-            bookingStatus = getIntent().getStringExtra("bookingStatus");
-        } else {
-            System.out.println(TAG);
-            System.out.println("Booking ID is empty !");
-            Toast.makeText(this, getString(R.string.oops_there_is_an_issue), Toast.LENGTH_SHORT).show();
-            this.finish();
-        }
+    /** SETUP COMPONENT **/
+    private void setupComponent(View view) {
+        Bundle bundle = getArguments();
+        assert bundle != null;
+        bookingId = (String) bundle.get("bookingId");
 
-        globalVariable = (GlobalVariable) this.getApplication();
+        context = requireContext();
+        activity = requireActivity();
+        globalVariable = (GlobalVariable) activity.getApplication();
         header = globalVariable.getHeaders();
-        dialog = new Dialog(this);
-        loadingScreen = new LoadingScreen(this);
+        dialog = new Dialog(context);
+        loadingScreen = new LoadingScreen(activity);
 
-        btnBack = findViewById(R.id.btnBack);
-        recyclerView = findViewById(R.id.recyclerView);
-        layout = findViewById(R.id.bookingLinearLayout);
-
-        btnUpload = findViewById(R.id.btnUpload);
-
-        if (Objects.equals(bookingStatus, "processing")) {
-            btnUpload.setVisibility(View.VISIBLE);
-        } else {
-            btnUpload.setVisibility(View.GONE);
-        }
+        recyclerView = view.findViewById(R.id.recyclerView);
+        layout = view.findViewById(R.id.linearLayout);
+        btnUpload = view.findViewById(R.id.btnUpload);
+        btnNext = view.findViewById(R.id.btnNext);
     }
 
 
-    private void setupEvent() {
-        btnBack.setOnClickListener(view -> finish());
-
-        btnUpload.setOnClickListener(view -> {
-            verifyStoragePermissions(this);
-
-            Intent intent = new Intent();
-            intent.setType("image/*");//allows any image file type. Change * to specific extension to limit it
-            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, false);
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            openGalleryToPickPhoto.launch(intent);
-        });
-    }
-
-
+    /** SETUP VIEWMODEL **/
     private void setupViewModel() {
         /*DECLARE*/
         viewModel = new ViewModelProvider(this).get(BookingPageViewModel.class);
         viewModel.instantiate();
 
-
         /*SEND REQUEST*/
         viewModel.bookingPhotoReadAll(header, bookingId);
-        viewModel.getBookingPhotoReadAllResponse().observe(this, response -> {
-            try {
+        viewModel.getBookingPhotoReadAllResponse().observe((LifecycleOwner) context, response->{
+            try
+            {
                 int result = response.getResult();
                 /*result == 1 => luu thong tin nguoi dung va vao homepage*/
-                if (result == 1) {
+                if( result == 1)
+                {
                     list = response.getData();
+                    System.out.println(TAG);
+                    System.out.println("photo size: " + list.size());
                     setupRecyclerView(list);
                 }
                 /*result == 0 => thong bao va thoat ung dung*/
-                if (result == 0) {
+                if( result == 0)
+                {
                     dialog.announce();
                     dialog.show(R.string.attention, getString(R.string.check_your_internet_connection), R.drawable.ic_info);
-                    dialog.btnOK.setOnClickListener(view -> {
+                    dialog.btnOK.setOnClickListener(view->{
                         dialog.close();
-                        finish();
+                        activity.finish();
                     });
                 }
 
-            } catch (Exception ex) {
+            }
+            catch(Exception ex)
+            {
                 /*Neu truy van lau qua ma khong nhan duoc phan hoi thi cung dong ung dung*/
                 System.out.println(TAG);
                 System.out.println(ex);
 
                 dialog.announce();
                 dialog.show(R.string.attention, getString(R.string.check_your_internet_connection), R.drawable.ic_info);
-                dialog.btnOK.setOnClickListener(view -> {
+                dialog.btnOK.setOnClickListener(view->{
                     dialog.close();
-                    finish();
+                    activity.finish();
                 });
             }
         });/*end SEND REQUEST*/
 
 
         /*ANIMATION*/
-        viewModel.getAnimation().observe(this, aBoolean -> {
-            if (aBoolean) loadingScreen.start();
+        viewModel.getAnimation().observe((LifecycleOwner) context, aBoolean -> {
+            if( aBoolean ) loadingScreen.start();
             else loadingScreen.stop();
         });
     }
 
-    private void setupRecyclerView(List<Photo> list) {
-        bookingPhotoAdapter = new BookingPhotoRecyclerView(this, list);
-        recyclerView.setAdapter(bookingPhotoAdapter);
 
-        LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+    /** SETUP RECYCLER VIEW **/
+    private void setupRecyclerView(List<Photo> list) {
+        adapter = new BookingPhotoRecyclerView(context, list);
+        recyclerView.setAdapter(adapter);
+
+        LinearLayoutManager manager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
 
-        if (Objects.equals(bookingStatus, "processing")) {
-            ItemTouchHelper helper = new ItemTouchHelper(callback);
-            helper.attachToRecyclerView(recyclerView);
-        }
+        ItemTouchHelper helper = new ItemTouchHelper(callback);
+        helper.attachToRecyclerView(recyclerView);
     }
 
-    /**
-     * CALL BACK
-     **/
+
+    /** CALL BACK NOTE:
+     * Cho phep xoa danh sach khi vuot
+     */
     ItemTouchHelper.SimpleCallback callback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -217,26 +207,24 @@ public class BookingPagePhotoActivity extends AppCompatActivity {
 
             removePhotoFromList(photoId);
             list.remove(position);
-            bookingPhotoAdapter.notifyItemRemoved(position);// trigger event one photo deleted from list
+            adapter.notifyItemRemoved(position);// trigger event one photo deleted from list
         }
 
-//        @Override
-//        public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder,
-//                                float dX, float dY, int actionState, boolean isCurrentlyActive) {
-//
-//            new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-//                    .addBackgroundColor(ContextCompat.getColor(BookingPagePhotoActivity.this, R.color.colorRed))
-//                    .addActionIcon(R.drawable.ic_delete)
-//                    .create()
-//                    .decorate();
-//
-//            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-//        }
+        @Override
+        public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
+
+            new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                    .addBackgroundColor(ContextCompat.getColor(context, R.color.colorRed))
+                    .addActionIcon(R.drawable.ic_delete)
+                    .create()
+                    .decorate();
+
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+        }
     };
 
 
-    /** REMOVE PHOTO FROM LIST
-     * NOTE:
+    /** NOTE:
      * Send request to remove photo from list
      */
     private void removePhotoFromList(int photoId)
@@ -258,16 +246,16 @@ public class BookingPagePhotoActivity extends AppCompatActivity {
                     BookingPhotoDelete content = response.body();
                     assert content != null;
                     int result = content.getResult();
+                    Snackbar snackbar;
                     if( result == 1)
                     {
-                        Snackbar snackbar = Snackbar.make(layout, "Success", Snackbar.LENGTH_SHORT);
-                        snackbar.show();
+                        snackbar = Snackbar.make(layout, "Success", Snackbar.LENGTH_SHORT);
                     }
                     else
                     {
-                        Snackbar snackbar = Snackbar.make(layout, "Fail", Snackbar.LENGTH_SHORT);
-                        snackbar.show();
+                        snackbar = Snackbar.make(layout, "Fail", Snackbar.LENGTH_SHORT);
                     }
+                    snackbar.show();
                 }
                 if(response.errorBody() != null)
                 {
@@ -289,7 +277,6 @@ public class BookingPagePhotoActivity extends AppCompatActivity {
             }
         });
     }
-
 
     /** NOTE:
      * Checks if the app has permission to write to device storage
@@ -315,33 +302,61 @@ public class BookingPagePhotoActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * open Gallery To Pick Photo
-     */
+    /** SETUP EVENT **/
+    private void setupEvent() {
+        /*BUTTON UPLOAD*/
+        btnUpload.setOnClickListener(view->{
+            verifyStoragePermissions(activity);
+
+            Intent intent = new Intent();
+            intent.setType("image/*");//allows any image file type. Change * to specific extension to limit it
+            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, false);
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            openGalleryToPickPhoto.launch(intent);
+        });/*end BUTTON UPLOAD*/
+
+
+        /*BUTTON NEXT*/
+        btnNext.setOnClickListener(view->{
+            String fragmentTag = "bookingFragment3";
+            BookingFragment3 nextFragment = new BookingFragment3();
+
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frameLayout, nextFragment, fragmentTag)
+                    .addToBackStack(fragmentTag)
+                    .commit();
+        });/*end BUTTON NEXT*/
+    }
+
+
+    /** OPEN GALLERY TO PICK PHOTO **/
     private final ActivityResultLauncher<Intent> openGalleryToPickPhoto = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if( result.getResultCode() == RESULT_OK)
-                    {
-                        Intent data = result.getData();
-                        assert data != null;
-                        Uri uri = data.getData();
+            new ActivityResultContracts.StartActivityForResult(), result -> {
+                if( result.getResultCode() == RESULT_OK)
+                {
+                    Intent data = result.getData();
+                    assert data != null;
+                    Uri uri = data.getData();
 
-                        uploadPhotoToServer(uri);
-                    }
-                    else
-                    {
-
-                    }
+                    uploadPhotoToServer(uri);
+                }
+                else
+                {
+                    System.out.println(TAG);
+                    System.out.println("Error - openGalleryToPickPhoto");
                 }
             });
 
+    /**UPLOAD PHOTO TO SERVER
+     * NOTE:
+     * Is uri of the photo that is being sending to the server
+     * Create a HTTP request to upload photo.
+     */
     private void uploadPhotoToServer(Uri uri)
     {
         /*Step 1 - set up file path*/
         String[] projection = { MediaStore.Images.Media.DATA };
-        Cursor cursor = getContentResolver().query(uri,
+        Cursor cursor = activity.getContentResolver().query(uri,
                 projection, null, null, null);
 
         int columnIndex = cursor.getColumnIndex(projection[0]);
@@ -356,7 +371,7 @@ public class BookingPagePhotoActivity extends AppCompatActivity {
 
 
         /*Step 3*/
-//        System.out.println("booking id: " + bookingId);
+        System.out.println("booking id: " + bookingId);
         RequestBody id = RequestBody.create(MediaType.parse("multipart/form-data"), bookingId);
 
         File file = new File(Uri.parse(filePath).toString());
@@ -378,14 +393,13 @@ public class BookingPagePhotoActivity extends AppCompatActivity {
                 {
                     BookingPhotoUpload content = response.body();
                     assert content != null;
-
                     int result = content.getResult();
                     String msg = content.getMsg();
 
                     if( result == 1)
                     {
                         viewModel.bookingPhotoReadAll(header, bookingId);
-                        bookingPhotoAdapter.notifyDataSetChanged();
+                        adapter.notifyDataSetChanged();
                     }
                     else
                     {
@@ -393,6 +407,8 @@ public class BookingPagePhotoActivity extends AppCompatActivity {
                         dialog.btnOK.setOnClickListener(view->dialog.close());
                         dialog.show(R.string.attention, msg, R.drawable.ic_info);
                     }
+
+
                 }
                 if(response.errorBody() != null)
                 {
@@ -415,5 +431,4 @@ public class BookingPagePhotoActivity extends AppCompatActivity {
             }
         });
     }
-
 }

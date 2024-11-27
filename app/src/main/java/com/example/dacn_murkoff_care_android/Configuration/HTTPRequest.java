@@ -3,8 +3,11 @@ package com.example.dacn_murkoff_care_android.Configuration;
 import com.example.dacn_murkoff_care_android.Container.AppointmentQueue;
 import com.example.dacn_murkoff_care_android.Container.AppointmentReadAll;
 import com.example.dacn_murkoff_care_android.Container.AppointmentReadByID;
+import com.example.dacn_murkoff_care_android.Container.BookingCancel;
 import com.example.dacn_murkoff_care_android.Container.BookingCreate;
+import com.example.dacn_murkoff_care_android.Container.BookingPhotoDelete;
 import com.example.dacn_murkoff_care_android.Container.BookingPhotoReadAll;
+import com.example.dacn_murkoff_care_android.Container.BookingPhotoUpload;
 import com.example.dacn_murkoff_care_android.Container.BookingReadAll;
 import com.example.dacn_murkoff_care_android.Container.BookingReadByID;
 import com.example.dacn_murkoff_care_android.Container.DoctorReadAll;
@@ -28,6 +31,7 @@ import java.util.Map;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -125,6 +129,9 @@ public interface HTTPRequest {
     @GET("api/patient/booking/{id}")
     Call<BookingReadByID> bookingReadByID(@HeaderMap Map <String, String> header, @Path("id") String bookingId);
 
+    @DELETE("api/patient/booking/{id}")
+    Call<BookingCancel> bookingCancel(@HeaderMap Map <String, String> header, @Path("id") String bookingId);
+
     @GET("api/patient/booking")
     Call<BookingReadAll> bookingReadAll(@HeaderMap Map<String, String> header, @HeaderMap Map<String, String> parameters);
 
@@ -133,12 +140,27 @@ public interface HTTPRequest {
     @GET("api/booking/photos/{id}")
     Call<BookingPhotoReadAll> bookingPhotoReadAll(@HeaderMap Map<String, String> headers, @Path("id") String id);
 
+
+    @Multipart
+    @POST("api/booking/upload-photo")
+    Call<BookingPhotoUpload> bookingPhotoUpload(@Header("Authorization") String accessToken,
+                                                @Header("Type") String type,
+                                                @Part("booking_id") RequestBody bookingId,
+                                                @Part MultipartBody.Part file);
+
+
+    @DELETE("api/booking/photo/{id}")
+    Call<BookingPhotoDelete> bookingPhotoDelete(@HeaderMap Map<String, String> header, @Path("id") int id);
+
+
     /** APPOINTMENTS **/
     @GET("api/patient/appointments")
     Call<AppointmentReadAll> appointmentReadAll(@HeaderMap Map <String, String> header, @QueryMap Map<String, String> parameters);
 
+
     @GET("api/patient/appointments/{id}")
     Call<AppointmentReadByID> appointmentReadByID(@HeaderMap Map <String, String> header, @Path("id") String appointmentId);
+
 
 
     /** NOTIFICATION **/
