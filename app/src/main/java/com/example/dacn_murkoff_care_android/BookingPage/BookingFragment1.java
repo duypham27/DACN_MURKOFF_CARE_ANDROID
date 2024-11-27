@@ -137,11 +137,11 @@ public class BookingFragment1 extends Fragment {
         txtAppointmentTime = view.findViewById(R.id.txtAppointmentTime);
 
         /*SET UP FORM*/
-        txtBookingPhone.setText(user.getPhone());
-        txtPatientBirthday.setText(user.getBirthday());
-        txtPatientAddress.setText(user.getAddress());
-        txtAppointmentDate.setText(Tooltip.getToday());
-        txtAppointmentTime.setText(R.string.default_appointment_time);
+//        txtBookingPhone.setText(user.getPhone());
+//        txtPatientBirthday.setText(user.getBirthday());
+//        txtPatientAddress.setText(user.getAddress());
+//        txtAppointmentDate.setText(Tooltip.getToday());
+//        txtAppointmentTime.setText(R.string.default_appointment_time);
     }
 
 

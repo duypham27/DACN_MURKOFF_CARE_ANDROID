@@ -217,7 +217,7 @@
     <string name="please_fulfill_mandatory_information">Please fill in the information completely to save time for examination procedures</string>
     <string name="note">Note</string>
     <string name="note_1">1. The information you provide will be used as medical examination records, when filling in your information, please:</string>
-    <string name="note_2">\t* Specify the first and last name, capitalize the first letter, for example: <b>Pham Bach An Duy</b></string>
+    <string name="note_2">\t* Specify the first and last name, capitalize the first letter, for example: <b>Nguyen Van A</b></string>
     <string name="note_3">\t* Fill it out completely and correctly and please double check the information before pressing Confirm</string>
     <string name="note_4">2. Please follow the epidemic prevention regulations (wearing a mask, disinfecting, declaring the epidemiology) when visiting the clinic.</string>
     <string name="default_appointment_time">12:00</string>
