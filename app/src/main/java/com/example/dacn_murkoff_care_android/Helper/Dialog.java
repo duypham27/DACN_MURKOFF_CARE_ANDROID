@@ -2,7 +2,9 @@ package com.example.dacn_murkoff_care_android.Helper;
 
 
 
-/*Lớp Dialog dùng để hiển thị phần thông báo trên màn hình*/
+/** DIALOG NOTE:
+ * Lớp Dialog dùng để hiển thị phần thông báo trên màn hình
+ **/
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;

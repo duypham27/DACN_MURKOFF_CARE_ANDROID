@@ -11,7 +11,7 @@ import com.example.dacn_murkoff_care_android.R;
 
 public class AlarmPageActivity extends AppCompatActivity {
 
-    private final String TAG = "AlarmPage_Activity";
+    private final String TAG = "Alarm_Page_Activity";
     private final FragmentManager manager = getSupportFragmentManager();
 
 
@@ -21,7 +21,7 @@ public class AlarmPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alarm_page);
 
 
-        String fragmentTag = "AlarmFragment";
+        String fragmentTag = "Alarm_Fragment";
         Fragment fragment = new AlarmPageFragment();
 
         /*Step 1*/

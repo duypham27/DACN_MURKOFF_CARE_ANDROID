@@ -14,6 +14,10 @@ import com.example.dacn_murkoff_care_android.Configuration.Constant;
 import com.example.dacn_murkoff_care_android.HomePage.HomePageActivity;
 import com.example.dacn_murkoff_care_android.R;
 
+
+/** NOTE:
+ * This class is used to create notification for this application
+ **/
 public class MyNotification extends android.app.Notification {
 
     int notificationID = 1896;
@@ -28,16 +32,14 @@ public class MyNotification extends android.app.Notification {
     }
 
 
-    /**
+    /** NOTE:
      * This function always runs whenever the application opens
-     * <p>
      * Notice 1:  that the NotificationCompat.Builder constructor requires that you provide a channel ID.
      * This is required for compatibility with Android 8.0 (API level 26) and higher,
-     * but is ignored by older versions
-     * <p>
+     * But is ignored by older versions
      * Notice 2: Before you can deliver the notification on Android 8.0 and higher,
-//     * you must register your app's notification channel with the system by passing
-     * an instance of NotificationChannel to createNotificationChannel().
+     * You must register your app's notification channel with the system by passing
+     * An instance of NotificationChannel to createNotificationChannel().
      * So the following code is blocked by a condition on the SDK_INT version:
      */
     public void createChannel() {
@@ -61,12 +63,11 @@ public class MyNotification extends android.app.Notification {
     }
 
 
-    /**
-     * SETUP CONTENT FOR NOTIFICATION
+    /** SETUP CONTENT FOR NOTIFICATION NOTE:
      * Title   is the title of notification
      * Text    is the short content of notification
      * BigText is the full content of notification
-     */
+     **/
     public void setup(String title, String text, String bigText) {
         /*Mo app khi nhan vao notification*/
         Intent intent = new Intent(context, HomePageActivity.class);
@@ -85,7 +86,8 @@ public class MyNotification extends android.app.Notification {
                 .setAutoCancel(true);//Notice this code calls setAutoCancel(), which automatically removes the notification when the user taps it.
     }
 
-    public void show() {
+    public void show()
+    {
         NotificationCompat.Builder builder = this.builder;
         //notificationManager.notify(notificationID, builder.build());
     }

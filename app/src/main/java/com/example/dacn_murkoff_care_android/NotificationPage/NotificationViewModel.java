@@ -13,7 +13,7 @@ public class NotificationViewModel extends ViewModel {
     private MutableLiveData<Boolean> animation = new MutableLiveData<>();
     private MutableLiveData<NotificationReadAll> readAllResponse = new MutableLiveData<>();
 
-    /*ANIMATION*/
+    /* ANIMATION */
     public MutableLiveData<Boolean> getAnimation() {
         return animation;
     }
@@ -26,7 +26,7 @@ public class NotificationViewModel extends ViewModel {
         }
     }
 
-    /*GETTER*/
+    /* GETTER */
     public MutableLiveData<NotificationReadAll> getReadAllResponse() {
         return readAllResponse;
     }

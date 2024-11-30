@@ -39,7 +39,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-
+/** APS NOTE:
+ * This intent service run every 30 seconds to update appointment queue for
+ * The patient. If next patient or next third patient is user. The device goes off
+ * With a notification and sound to remind the user
+ * Every 45 seconds, the service will send a GET request to check current patient.
+ */
 public class AppointmentPageService extends IntentService {
 
     public static final String TAG = "Appointment_Page_Service";
@@ -55,9 +60,9 @@ public class AppointmentPageService extends IntentService {
     private String doctorName;// is the name of doctor
     private boolean isNotify = false;
 
-    /**
-     Creates an IntentService.  Invoked by your subclass's constructor.
-     Name Used to name the worker thread, important only for debugging.
+    /** NOTE:
+     * Creates an IntentService.  Invoked by your subclass's constructor.
+     * Name Used to name the worker thread, important only for debugging.
      **/
     public AppointmentPageService(String name) {
         super("Notification_Service");
@@ -96,7 +101,10 @@ public class AppointmentPageService extends IntentService {
 
     }
 
-
+    /** NOTE:
+     * Intent is the intent sent from Appointment Recycler View
+     * This function run first whenever the service is called.
+     */
     boolean running = canServiceRun();
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
@@ -206,7 +214,7 @@ public class AppointmentPageService extends IntentService {
     }
 
 
-    /**
+    /** NOTE:
      This function returns boolean flag that this service can be run or not?
      YES, isNotify == false || 7 <= hour <= 18
      NO, if the device have gone off notification and sound || current time <= 7 || current time > 18
@@ -231,9 +239,9 @@ public class AppointmentPageService extends IntentService {
     }
 
 
-    /**
-     Text is the short text
-     BigText is the full text
+    /** NOTE:
+     * Text is the short text
+     * BigText is the full text
      **/
     public void showMessageInDevice(String text, String bigText)
     {
@@ -262,9 +270,9 @@ public class AppointmentPageService extends IntentService {
 
 
 
-    /**
-     This function loop through the list of next 3 patients
-     If one patient of the list is the user's position, the device will show notification and sound to remind user.
+    /** NOTE:
+     * This function loop through the list of next 3 patients
+     * If one patient of the list is the user's position, the device will show notification and sound to remind user.
      **/
 
     private void checkNextPatientAndShowNotification(List<Queue> list)
@@ -289,9 +297,9 @@ public class AppointmentPageService extends IntentService {
     }
 
 
-    /**
-    Create notification in server
-    This function creates a notification in server to help users to watch notification again.
+    /** NOTE:
+     * Create notification in server
+     * This function creates a notification in server to help users to watch notification again.
      **/
     private void createNotificationInServer(String message)
     {
@@ -332,7 +340,7 @@ public class AppointmentPageService extends IntentService {
 
             @Override
             public void onFailure(@NonNull Call<NotificationCreate> call, @NonNull Throwable t) {
-                System.out.println("Appointment-page Service - create notification in server - error: " + t.getMessage());
+                System.out.println("Appointment Page Service - Create notification in server - error: " + t.getMessage());
             }
         });/*end Step 4*/
     }

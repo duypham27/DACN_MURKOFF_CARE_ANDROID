@@ -101,7 +101,7 @@ public class AppointmentPageInfoActivity extends AppCompatActivity {
 
     }
 
-    /** SETTING UP COMPONENT */
+    /** SET UP COMPONENT */
     private void setupComponent() {
         GlobalVariable globalVariable = (GlobalVariable) this.getApplication();
         dialog = new Dialog(this);
@@ -216,7 +216,7 @@ public class AppointmentPageInfoActivity extends AppCompatActivity {
         });/*end ANIMATION*/
     }
 
-    /**
+    /** NOTE:
      * Send request to get appointment info
      **/
     private void requestAppointmentInfo(Map<String, String> header, String appointmentId)
@@ -266,9 +266,7 @@ public class AppointmentPageInfoActivity extends AppCompatActivity {
     }
 
 
-    /**
-     * PRINT APPOINTMENT INFO
-     */
+    /** PRINT APPOINTMENT INFO **/
     private void printAppointmentInfo(Appointment appointment)
     {
         String doctorName = appointment.getDoctor().getName();
@@ -373,9 +371,7 @@ public class AppointmentPageInfoActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * SETTING UP EVENT
-     **/
+    /** SET UP EVENT **/
     private void setupEvent() {
         /*BUTTON BACK*/
         btnBack.setOnClickListener(view->finish());
@@ -401,7 +397,7 @@ public class AppointmentPageInfoActivity extends AppCompatActivity {
         });
     }
 
-    /**
+    /** NOTE:
      * Setup appointment queue recycler view
      * MyPosition is the position of the patient who are waiting for his/her turn
      **/
@@ -419,7 +415,7 @@ public class AppointmentPageInfoActivity extends AppCompatActivity {
     }
 
 
-    /**
+    /** NOTE:
      * This function send GET request to get current appointment queue
      * We just send GET quest when the "appointmentStatus" flag == TRUE
      **/

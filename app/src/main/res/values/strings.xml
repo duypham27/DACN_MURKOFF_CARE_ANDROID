@@ -234,4 +234,5 @@
     <string name="phone_number_2">Phone number:</string>
     <string name="default_phone_number">123456789</string>
     <string name="working_process">Working process:</string>
+    <string name="you_do_not_any_appointment">You don\'t have any upcoming appointments!</string>
 </resources>

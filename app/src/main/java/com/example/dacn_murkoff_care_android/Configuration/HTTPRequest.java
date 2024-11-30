@@ -14,6 +14,8 @@ import com.example.dacn_murkoff_care_android.Container.DoctorReadAll;
 import com.example.dacn_murkoff_care_android.Container.DoctorReadByID;
 import com.example.dacn_murkoff_care_android.Container.Login;
 import com.example.dacn_murkoff_care_android.Container.NotificationCreate;
+import com.example.dacn_murkoff_care_android.Container.NotificationMarkAllAsRead;
+import com.example.dacn_murkoff_care_android.Container.NotificationMarkAsRead;
 import com.example.dacn_murkoff_care_android.Container.NotificationReadAll;
 import com.example.dacn_murkoff_care_android.Container.PatientProfile;
 import com.example.dacn_murkoff_care_android.Container.PatientProfileChangeAvatar;
@@ -168,7 +170,12 @@ public interface HTTPRequest {
     Call<NotificationReadAll> notificationReadAll(@HeaderMap Map<String, String> header);
 
 
+    @POST("api/patient/notifications/mark-as-read/{id}")
+    Call<NotificationMarkAsRead> notificationMarkAsRead(@HeaderMap Map<String, String> header, @Path("id") String notificationId);
 
+
+    @POST("api/patient/notifications")
+    Call<NotificationMarkAllAsRead> notificationMarkAllAsRead(@HeaderMap Map <String, String> header);
 
 
     @FormUrlEncoded

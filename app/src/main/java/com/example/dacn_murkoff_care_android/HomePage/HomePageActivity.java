@@ -69,6 +69,7 @@ public class HomePageActivity extends AppCompatActivity {
         //Necessary Functions
         setupVariable();
         setupEvent();
+        setNumberOnNotificationIcon();
         //Non Necessary Functions
         //getDataIntent();
 

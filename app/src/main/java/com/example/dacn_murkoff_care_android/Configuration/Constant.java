@@ -32,7 +32,7 @@ public class Constant {
         return "https://www.youtube.com/watch?v=rnVOM_WJmN8";
     }
 
-    /**
+    /** NOTE:
      * API KEY FROM https://openweathermap.org/
      * Sử dụng API này để lấy nhiệt độ của TP.HCM
      * https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
@@ -44,10 +44,6 @@ public class Constant {
         return "b4c95b60d0242db70e8636dd1ca11b15";
     }
 
-//    public static  String OPEN_WEATHER_MAP_API_KEY_2()
-//    {
-//        return "";
-//    }
 
     public static String OPEN_WEATHER_MAP_PATH()
     {

@@ -52,13 +52,13 @@ public class EmailFragment2 extends Fragment {
         return view;
     }
 
-
+    /** SETUP COMPONENT **/
     private void setupComponent(View view)
     {
         btnSend = view.findViewById(R.id.btnSend);
     }
 
-
+    /** SETUP EVENT **/
     private void setupEvent()
     {
         btnSend.setOnClickListener(view -> {

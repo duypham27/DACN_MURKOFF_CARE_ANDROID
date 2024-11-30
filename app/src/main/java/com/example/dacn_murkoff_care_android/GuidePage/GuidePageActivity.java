@@ -35,6 +35,8 @@ public class GuidePageActivity extends AppCompatActivity {
 
     }
 
+
+    /** SETUP COMPONENT **/
     private void setupComponent() {
         btnBack = findViewById(R.id.btnBack);
         wvwLocation = findViewById(R.id.wvwDescription);
@@ -45,6 +47,8 @@ public class GuidePageActivity extends AppCompatActivity {
                 .getSharedPreferences(globalVariable.getSharedReferenceKey(), MODE_PRIVATE);
     }
 
+
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -52,6 +56,7 @@ public class GuidePageActivity extends AppCompatActivity {
     }
 
 
+    /** SETUP EVENT **/
     @SuppressLint("SetJavaScriptEnabled")
     private void setupEvent() {
 

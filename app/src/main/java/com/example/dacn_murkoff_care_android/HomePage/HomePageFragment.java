@@ -87,6 +87,8 @@
             return view;
         }
 
+
+        /** SETUP COMPONENT **/
         private void setupComponent(View view)
         {
             context = requireContext();
@@ -108,6 +110,7 @@
         }
 
 
+        /** SETUP VIEW MODEL **/
         private void setupViewModel()
         {
             /*Step 1 - Khởi tạo ViewModel*/

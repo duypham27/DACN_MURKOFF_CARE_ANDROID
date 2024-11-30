@@ -33,7 +33,7 @@ public class EmailPageActivity extends AppCompatActivity {
     }
 
 
-
+    /** SETUP EMAIL FRAGMENT **/
     private void setupEmailFragment1() {
         String fragmentTag = "EmailFragment1";
         Fragment fragment = new EmailFragment1();
@@ -56,7 +56,7 @@ public class EmailPageActivity extends AppCompatActivity {
         transaction.commit();
     }
 
-
+    /** SETUP COMPONENT **/
     private void setupComponent() {
         btnBack = findViewById(R.id.btnBack);
         GlobalVariable globalVariable = (GlobalVariable) this.getApplication();
@@ -71,7 +71,7 @@ public class EmailPageActivity extends AppCompatActivity {
         Tooltip.setLocale(this, sharedPreferences);
     }
 
-
+    /** SETUP EVENT **/
     private void setupEvent() {
         btnBack.setOnClickListener(view-> finish());
     }

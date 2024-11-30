@@ -20,10 +20,10 @@ import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 public class Tooltip {
-    /**
-     * @return String today with format yyyy-MM-dd.
+    /** NOTE:
+     * Return String today with format yyyy-MM-dd.
      * For example, 2022-05-01
-     */
+     **/
     public static String getToday()
     {
         TimeZone timeZone = TimeZone.getTimeZone("Asia/Ho_Chi_Minh");
@@ -48,9 +48,9 @@ public class Tooltip {
         return yearValue + "-" + monthValue + "-" + dateValue;
     }
 
-    /**
+    /** NOTE:
      * Lấy ra ngày tháng năm theo cách viết tiếng việt
-     */
+     **/
     public static String getReadableToday(Context context)
     {
         TimeZone timeZone = TimeZone.getTimeZone("Asia/Ho_Chi_Minh");
@@ -61,7 +61,7 @@ public class Tooltip {
         int month = calendar.get(Calendar.MONTH) + 1;
         int year = calendar.get(Calendar.YEAR);
 
-        /*dịch giá trị sang ngôn ngữ viết*/
+        /*Dịch giá trị sang ngôn ngữ viết*/
         String dayValue = context.getString(R.string.monday);
         String monday = context.getString(R.string.monday);
         String tuesday = context.getString(R.string.tuesday);
@@ -108,14 +108,14 @@ public class Tooltip {
         }
         String yearValue = String.valueOf(year);
 
-        /*trả kết quả về*/
+        /*Trả kết quả về*/
         return  dayValue + ", "+ dateValue + "/" +  monthValue   + "/" + yearValue;
     }
 
-    /**
-     * @return String beautifier datetime
+    /** NOTE:
+     * Return String beautifier datetime
      * For instance, 2022-11-24 09:57:53 => 09:57 T5, 24-11-2022
-     */
+     **/
     @SuppressLint("SimpleDateFormat")
     public static String beautifierDatetime(Context context, String input)
     {
@@ -154,7 +154,7 @@ public class Tooltip {
      * date2 the newest date
      * timeUnit the unit in which you want the diff
      * RETURN the diff value, in the provided unit
-     */
+     **/
     public static long getDateDifference(Date date1, Date date2, TimeUnit timeUnit) {
         long diffInMillies = date2.getTime() - date1.getTime();
         return timeUnit.convert(diffInMillies,TimeUnit.MILLISECONDS);
@@ -164,7 +164,7 @@ public class Tooltip {
      * Set application's language
      * Context is context of application
      * sharedPreferences is shared preference
-     */
+     **/
     public static void setLocale(Context context, SharedPreferences sharedPreferences)
     {
         /*tu bo nho ROM cua thiet bi lay ra ngon ngu da cai dat cho ung dung*/

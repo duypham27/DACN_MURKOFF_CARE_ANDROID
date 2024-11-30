@@ -24,7 +24,7 @@ import java.util.Calendar;
 
 public class AlarmPageFragment extends Fragment {
 
-    private final String TAG = "Alarm-page Fragment";
+    private final String TAG = "Alarm_Page_Fragment";
 
     private ImageButton btnBack;
     private AppCompatButton btnConfirm;

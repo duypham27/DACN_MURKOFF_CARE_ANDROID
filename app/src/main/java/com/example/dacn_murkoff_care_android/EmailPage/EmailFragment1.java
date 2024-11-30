@@ -35,7 +35,7 @@ public class EmailFragment1 extends Fragment {
     }
 
 
-
+    /** SETUP COMPONENT **/
     private void setupComponent(View view) {
         txtTitle = view.findViewById(R.id.txtTitle);
         txtContent = view.findViewById(R.id.txtContent);
@@ -45,6 +45,7 @@ public class EmailFragment1 extends Fragment {
     }
 
 
+    /** SETUP EVENT **/
     private void setupEvent() {
         btnNext.setOnClickListener(view->{
             String title = txtTitle.getText().toString();

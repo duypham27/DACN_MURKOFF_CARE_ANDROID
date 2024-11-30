@@ -20,8 +20,10 @@ public class GlobalVariable extends Application {
     private Map<String, String> headers;
 
 
-    /*Thiết lập và trả về một HTTP request header khi ứng dụng gửi yêu cầu HTTP đến máy chủ
-    * các Type được dùng để phân biệt giữa Doctor và Patient */
+    /** NOTE:
+     * Thiết lập và trả về một HTTP request header khi ứng dụng gửi yêu cầu HTTP đến máy chủ
+     * Các Type được dùng để phân biệt giữa Doctor và Patient
+     **/
     public Map<String, String> getHeaders() {
 
         this.headers = new HashMap<>();

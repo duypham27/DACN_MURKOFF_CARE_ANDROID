@@ -229,7 +229,7 @@ public class SearchPageActivity extends AppCompatActivity {
     }
 
 
-    /** List is the list of doctor **/
+    /** LIST IS THE LIST OF DOCTOR **/
     private void setupRecyclerViewDoctor(List<Doctor> list)
     {
         DoctorRecyclerView doctorAdapter = new DoctorRecyclerView(this, list);
@@ -240,7 +240,7 @@ public class SearchPageActivity extends AppCompatActivity {
     }
 
 
-    /** List is the list of speciality **/
+    /** LIST IS THE LIST OF SPECIALITY **/
     private void setupRecyclerViewSpeciality(List<Speciality> list)
     {
         SpecialityRecyclerView specialityAdapter = new SpecialityRecyclerView(this, list, R.layout.recycler_view_element_speciality_2);
@@ -251,7 +251,7 @@ public class SearchPageActivity extends AppCompatActivity {
     }
 
 
-    /** List is the list of service **/
+    /** LIST IS THE LIST OF SERVICE **/
     private void setupRecyclerViewService(List<Service> list)
     {
         ServiceRecyclerView serviceAdapter = new ServiceRecyclerView(this, list);
