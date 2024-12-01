@@ -30,7 +30,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
+/** NOTE:
  This activity shows service's information and button booking
  **/
 
@@ -71,7 +71,7 @@ public class ServicePageActivity extends AppCompatActivity {
         Tooltip.setLocale(this, sharedPreferences);
     }
 
-    /** SETTING UP COMPONENT **/
+    /** SETUP COMPONENT **/
     private void setupComponent()
     {
         serviceId = getIntent().getStringExtra("serviceId");
@@ -91,7 +91,7 @@ public class ServicePageActivity extends AppCompatActivity {
         doctorRecyclerView = findViewById(R.id.doctorRecyclerView);
     }
 
-    /** SETTING UP VIEWMODEL **/
+    /** SETUP VIEWMODEL **/
     private void setupViewModel()
     {
         ServicePageViewModel viewModel = new ViewModelProvider(this).get(ServicePageViewModel.class);
@@ -208,7 +208,7 @@ public class ServicePageActivity extends AppCompatActivity {
     }
 
 
-    /** SETTING UP EVENT **/
+    /** SETUP EVENT **/
     private void setupEvent()
     {
         btnBack.setOnClickListener(view->finish());

@@ -86,11 +86,11 @@ public class InformationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_information);
 
         setupComponent();
-        //showInfo();
+        showInfo();
         setupEvent();
 
     }
-
+    /** SETUP COMPONENT **/
     private void setupComponent() {
         imgAvatar = findViewById(R.id.imgAvatar);
         txtHealthInsuranceNumber = findViewById(R.id.txtHealthInsuranceNumber);
@@ -119,6 +119,7 @@ public class InformationActivity extends AppCompatActivity {
         sharedPreferences = this.getApplication()
                 .getSharedPreferences(globalVariable.getSharedReferenceKey(), MODE_PRIVATE);
     }
+
 
     private void showInfo() {
         User user = globalVariable.getAuthUser();
@@ -165,8 +166,10 @@ public class InformationActivity extends AppCompatActivity {
         txtUpdateAt.setText(updateAt);
     }
 
+
+    /** SETUP EVENT **/
     private void setupEvent() {
-        /*-************************PREPARE TIME & DATE PICKER FOR BUTTON**************************************/
+        /** PREPARE TIME & DATE PICKER FOR BUTTON **/
         /*GET TODAY*/
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
@@ -195,7 +198,7 @@ public class InformationActivity extends AppCompatActivity {
             txtBirthday.setText(output);
         };
 
-        /* *************************LISTEN CLICK EVENT FOR BUTTONS**************************************/
+        /** LISTEN CLICK EVENT FOR BUTTONS **/
         /*EDIT TEXT BIRTHDAY*/
         txtBirthday.setOnClickListener(birthdayView -> {
             new DatePickerDialog(this,birthdayDialog,year,month,day).show();
@@ -308,7 +311,7 @@ public class InformationActivity extends AppCompatActivity {
         });
     }
 
-    /**
+    /**NOTE:
      * Checks if the app has permission to write to device storage
      * If the app does not has permission then the user will be prompted to grant permissions
      */

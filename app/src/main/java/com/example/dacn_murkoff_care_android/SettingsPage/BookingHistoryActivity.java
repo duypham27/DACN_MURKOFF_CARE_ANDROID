@@ -46,7 +46,7 @@ public class BookingHistoryActivity extends AppCompatActivity {
     }
 
 
-    /** SETTING UP COMPONENT **/
+    /** SETUP COMPONENT **/
     private void setupComponent() {
         btnBack = findViewById(R.id.btnBack);
         bookingRecyclerView = findViewById(R.id.bookingRecyclerView);
@@ -61,7 +61,7 @@ public class BookingHistoryActivity extends AppCompatActivity {
     }
 
 
-    /** SETTING UP VIEWMODEL **/
+    /** SETUP VIEWMODEL **/
     private void setupViewModel() {
         /*declare*/
         SettingsPageViewModel viewModel = new ViewModelProvider(this).get(SettingsPageViewModel.class);
@@ -118,13 +118,13 @@ public class BookingHistoryActivity extends AppCompatActivity {
     }
 
 
-    /** SETTING UP EVENT **/
+    /** SETUP EVENT **/
     private void setupEvent() {
         btnBack.setOnClickListener(view->finish());
     }
 
 
-    /** SETTING UP EVENT **/
+    /** SETUP EVENT **/
     private void setupRecyclerView(List<Booking> list) {
         BookingRecyclerView appointmentAdapter = new BookingRecyclerView(this, list);
         bookingRecyclerView.setAdapter(appointmentAdapter);

@@ -20,6 +20,7 @@ import com.example.dacn_murkoff_care_android.Container.NotificationReadAll;
 import com.example.dacn_murkoff_care_android.Container.PatientProfile;
 import com.example.dacn_murkoff_care_android.Container.PatientProfileChangeAvatar;
 import com.example.dacn_murkoff_care_android.Container.PatientProfileChangePersonalInformation;
+import com.example.dacn_murkoff_care_android.Container.RecordReadByID;
 import com.example.dacn_murkoff_care_android.Container.ServiceReadAll;
 import com.example.dacn_murkoff_care_android.Container.ServiceReadByID;
 import com.example.dacn_murkoff_care_android.Container.SpecialityReadAll;
@@ -47,25 +48,25 @@ import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 
 public interface HTTPRequest {
-    /* LOGIN WITH PHONE NUMBER */
+    /** LOGIN WITH PHONE NUMBER **/
     @FormUrlEncoded
     @POST("api/login")
     Call<Login> login(@Field("phone") String phone, @Field("password") String password, @Field("type") String type);
 
 
-    /* LOGIN WITH GOOGLE ACCOUNT */
+    /** LOGIN WITH GOOGLE ACCOUNT **/
     @FormUrlEncoded
     @POST("api/login/google")
     Call<Login> loginWithGoogle(@Field("email") String email, @Field("password") String password, @Field("type") String type);
 
-    /* LOGIN WITH GITHUB ACCOUNT */
+    /** LOGIN WITH GITHUB ACCOUNT **/
     @FormUrlEncoded
     @POST("api/login/github")
     Call<Login> loginWithGithub(@Field("email") String email, @Field("password") String password, @Field("type") String type);
 
 
 
-    /* PATIENT PROFILE - GET - READ PERSONAL INFORMATION */
+    /** PATIENT PROFILE - GET - READ PERSONAL INFORMATION **/
     /* GET */
     @GET("api/patient/profile")
     Call<PatientProfile> readPersonalInformation(@HeaderMap Map<String, String> headers);
@@ -103,7 +104,7 @@ public interface HTTPRequest {
     Call<DoctorReadByID> doctorReadByID(@HeaderMap Map<String, String> headers, @Path("id") String id);
 
 
-    /**********************SERVICE**********************/
+    /** SERVICE **/
     @GET("api/services")
     Call<ServiceReadAll> serviceReadAll(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> parameters);
 
@@ -185,12 +186,16 @@ public interface HTTPRequest {
                                                 @Field("record_id") String recordId,
                                                 @Field("record_type") String recordType);
 
-    /************** QUEUE **********/
+    /** QUEUE **/
     @GET("api/appointment-queue")
     Call<AppointmentQueue> appointmentQueue(@HeaderMap Map <String, String> header, @QueryMap Map<String, String> parameters);
 
 
-    /************** TREATMENT **********/
+    /** RECORD **/
+    @GET("api/patient/appointments/records/{id}")
+    Call<RecordReadByID> recordReadById(@HeaderMap Map <String, String> header, @Path("id") String recordId);
+
+    /** TREATMENT **/
     @GET("api/patient/treatments/{id}")
     Call<TreatmentReadAll> treatmentReadAll(@HeaderMap Map <String, String> header, @Path("id") String appointmentId);
 
@@ -198,7 +203,7 @@ public interface HTTPRequest {
     Call<TreatmentReadByID> treatmentReadByID(@HeaderMap Map <String, String> header, @Path("id") String treatmentId);
 
 
-    /************** WEATHER FORCASE - OPEN WEATHER MAP.ORG **********/
+    /** WEATHER FORCASE - OPEN WEATHER MAP.ORG **/
     @GET("https://api.openweathermap.org/data/2.5/weather")
     Call<WeatherForecast> getCurrentWeather(@QueryMap Map<String, String> parameters);
 

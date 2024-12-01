@@ -17,9 +17,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-/** This function only get patient's profile when Access Token exists in application **/
+/**NOTE:
+ * This function only get patient's profile when Access Token exists in application
+ **/
 public class MainViewModel extends ViewModel {
-    private final String TAG = "MainViewModel";
+    private final String TAG = "Main_View_Model";
     private MutableLiveData<PatientProfile> response = new MutableLiveData<>();
 
     public MutableLiveData<PatientProfile> getResponse() {

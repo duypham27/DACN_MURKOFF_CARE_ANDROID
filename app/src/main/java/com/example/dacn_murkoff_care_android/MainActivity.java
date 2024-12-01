@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
             /*delay 1s before starting HomeActivity*/
             Handler handler = new Handler(Looper.myLooper());
             handler.postDelayed(() -> {
-                Intent intent = new Intent(MainActivity.this, HomePageActivity.class);
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             },1000);

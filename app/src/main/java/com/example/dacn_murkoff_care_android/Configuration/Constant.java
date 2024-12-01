@@ -19,12 +19,17 @@ public class Constant {
 
     public static String UPLOAD_URI()
     {
-        return "http://localhost/DACN_API/api/assets/uploads/";
+        return "http://192.168.1.3/DACN_API/api/assets/uploads/";
     }
 
     public static String APP_PATH()
     {
-        return "http://localhost/DACN_API/";
+        return "http://192.168.1.3/DACN_API/";
+    }
+
+    public static String APP_PATH_EMULATOR()
+    {
+        return "http://10.0.2.2:80/DACN_API/";
     }
 
     public static String VIDEO_PATH()

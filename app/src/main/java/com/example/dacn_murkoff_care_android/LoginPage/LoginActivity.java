@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
     private String phoneNumber;
     private AppCompatImageButton btnGoogleAuth;
 
-    //login with google account
+    //Login with google account
     private GoogleSignInOptions googleSignInOption;
     private GoogleSignInClient googleSignInClient;
 

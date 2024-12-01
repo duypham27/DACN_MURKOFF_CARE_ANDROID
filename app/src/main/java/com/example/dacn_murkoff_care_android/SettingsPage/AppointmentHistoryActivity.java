@@ -43,6 +43,8 @@ public class AppointmentHistoryActivity extends AppCompatActivity {
 
     }
 
+
+    /** SETUP COMPONENT **/
     private void setupComponent() {
         GlobalVariable globalVariable1 = (GlobalVariable) this.getApplication();
         sharedPreferences = this.getApplication()
@@ -58,6 +60,7 @@ public class AppointmentHistoryActivity extends AppCompatActivity {
     }
 
 
+    /** SETUP VIEWMODEL **/
     private void setupViewModel() {
         SettingsPageViewModel viewModel = new ViewModelProvider(this).get(SettingsPageViewModel.class);
         viewModel.instantiate();
@@ -118,11 +121,14 @@ public class AppointmentHistoryActivity extends AppCompatActivity {
         });
     }
 
+
+    /** SETUP EVENT **/
     private void setupEvent() {
         btnBack.setOnClickListener(view->finish());
     }
 
 
+    /** SETUP RECYCLERVIEW **/
     private void setupRecyclerView(List<Appointment> list)
     {
         Appointment2RecyclerView appointmentAdapter = new Appointment2RecyclerView(this, list);

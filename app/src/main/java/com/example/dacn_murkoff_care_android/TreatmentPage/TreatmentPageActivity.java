@@ -32,9 +32,7 @@ public class TreatmentPageActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * SETTING UP COMPONENT
-     **/
+    /** SETUP COMPONENT **/
     private void setupComponent() {
         btnBack = findViewById(R.id.btnBack);
         GlobalVariable globalVariable = (GlobalVariable) this.getApplication();
@@ -50,7 +48,7 @@ public class TreatmentPageActivity extends AppCompatActivity {
 
     private void setupTreatmentFragment1()
     {
-        String fragmentTag = "TreatmentFragment1";
+        String fragmentTag = "Treatment_Fragment1";
         Fragment fragment = new TreatmentFragment1();
 
 

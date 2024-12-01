@@ -49,17 +49,16 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout-compose:1.1.0-rc01")
 
     //Auth Phone + Github From Firebase
-    implementation(platform("com.google.firebase:firebase-bom:33.4.0"))
-    implementation("com.google.firebase:firebase-analytics")
+    implementation(platform("com.google.firebase:firebase-bom:31.0.3"))
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-messaging:23.1.1")  // Optional if you plan to send notifications via FCM
 
 
     //Auth Google Login
-    implementation ("com.google.android.gms:play-services-auth:21.2.0")
+    implementation ("com.google.android.gms:play-services-auth:20.4.0")
 
     //GSON
-    implementation ("com.google.code.gson:gson:2.11.0")
+    implementation ("com.google.code.gson:gson:2.8.6")
 
     // Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")

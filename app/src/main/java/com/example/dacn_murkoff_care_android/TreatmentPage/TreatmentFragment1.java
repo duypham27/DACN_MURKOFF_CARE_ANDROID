@@ -25,12 +25,12 @@ import com.example.dacn_murkoff_care_android.RecyclerView.TreatmentRecyclerView;
 import java.util.List;
 import java.util.Map;
 
-/**
+/**NOTE:
  * This fragment will show all appointments to users selects one of them
  **/
 
 public class TreatmentFragment1 extends Fragment {
-    private final String TAG = "Treatment Fragment 1";
+    private final String TAG = "Treatment_Fragment1";
     private Context context;
     private Activity activity;
     private Dialog dialog;
@@ -57,9 +57,7 @@ public class TreatmentFragment1 extends Fragment {
         return view;
     }
 
-    /**
-     * SETTING UP COMPONENT
-     **/
+    /** SETUP COMPONENT **/
     private void setupComponent(View view)
     {
         context = requireContext();
@@ -77,9 +75,7 @@ public class TreatmentFragment1 extends Fragment {
         btnSetTime = view.findViewById(R.id.btnSetAlarm);
     }
 
-    /**
-     * SETTING UP VIEWMODEL
-     **/
+    /** SETUP VIEWMODEL **/
     private void setupViewModel()
     {
         viewModel = new ViewModelProvider(this).get(TreatmentPageViewModel.class);
@@ -133,9 +129,7 @@ public class TreatmentFragment1 extends Fragment {
     }
 
 
-    /**
-     * SETTING UP RECYCLERVIEW
-     **/
+    /** SETUP RECYCLERVIEW **/
     private void setupRecyclerView(List<Treatment> list)
     {
         TreatmentRecyclerView treatmentAdapter = new TreatmentRecyclerView(context, list);
@@ -146,9 +140,7 @@ public class TreatmentFragment1 extends Fragment {
 
     }
 
-    /**
-     * SETTING UP EVENT
-     **/
+    /** SETUP EVENT **/
     private void setupEvent()
     {
         btnSetTime.setOnClickListener(view -> {

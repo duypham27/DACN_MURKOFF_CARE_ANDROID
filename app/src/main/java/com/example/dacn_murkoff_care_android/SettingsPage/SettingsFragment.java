@@ -24,6 +24,9 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+/**NOTE:
+ * Settings Fragment shows all settings: language, appearance,.....
+ **/
 public class SettingsFragment extends Fragment {
     private RecyclerView settingRecyclerView;
     private Context context;
