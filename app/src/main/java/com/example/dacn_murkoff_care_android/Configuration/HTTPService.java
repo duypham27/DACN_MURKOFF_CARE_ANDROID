@@ -7,7 +7,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HTTPService {
 
-    private static final String APP_PATH = Constant.APP_PATH();
+    //private static final String APP_PATH = Constant.APP_PATH();
+
+    private static final String APP_PATH = Constant.APP_PATH_EMULATOR();
     private static Retrofit retrofit;
 
     // Hàm getInstance() sẽ trả về một instance Retrofit duy nhất

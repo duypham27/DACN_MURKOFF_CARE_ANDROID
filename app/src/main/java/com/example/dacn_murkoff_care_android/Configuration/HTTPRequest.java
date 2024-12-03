@@ -50,7 +50,7 @@ import retrofit2.http.QueryMap;
 public interface HTTPRequest {
     /** LOGIN WITH PHONE NUMBER **/
     @FormUrlEncoded
-    @POST("api/login")
+    @POST("login")
     Call<Login> login(@Field("phone") String phone, @Field("password") String password, @Field("type") String type);
 
 

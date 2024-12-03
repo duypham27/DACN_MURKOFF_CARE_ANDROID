@@ -19,12 +19,12 @@ public class Constant {
 
     public static String UPLOAD_URI()
     {
-        return "http://192.168.1.3/DACN_API/api/assets/uploads/";
+        return "http://192.168.32.177:8080/DACN_API/assets/uploads/";
     }
 
     public static String APP_PATH()
     {
-        return "http://192.168.1.3/DACN_API/";
+        return "http://192.168.32.177:8080/DACN_API/";
     }
 
     public static String APP_PATH_EMULATOR()

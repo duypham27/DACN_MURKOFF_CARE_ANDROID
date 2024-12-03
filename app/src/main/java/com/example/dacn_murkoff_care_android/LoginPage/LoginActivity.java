@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //login with phone number
         mAuth = FirebaseAuth.getInstance();
-        mAuth.setLanguageCode("vi");
+        //mAuth.setLanguageCode("vi");
 
         dialog = new Dialog(this);
         loadingScreen = new LoadingScreen(this);
