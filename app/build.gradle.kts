@@ -45,7 +45,7 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     implementation("androidx.constraintlayout:constraintlayout:2.2.0-rc01")
-    // To use constraintlayout in compose
+    //To use constraintlayout in compose
     implementation("androidx.constraintlayout:constraintlayout-compose:1.1.0-rc01")
 
     //Auth Phone + Github From Firebase
@@ -60,7 +60,7 @@ dependencies {
     //GSON
     implementation ("com.google.code.gson:gson:2.8.6")
 
-    // Retrofit
+    //Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
@@ -70,11 +70,14 @@ dependencies {
     //CircleImageView from hdodenhof
     implementation ("de.hdodenhof:circleimageview:3.1.0")
 
-    // Icon badge - is used to set number on the top-right corner of icon
+    //Icon badge - is used to set number on the top-right corner of icon
     implementation ("com.google.android.material:material:1.8.0-alpha02")
 
-    // Recycler view decorator
+    //Recycler view decorator
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
     implementation ("it.xabaras.android:recyclerview-swipedecorator:1.4")
+
+    //OkHttp
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
 }

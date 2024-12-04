@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp">
 
+        <!-- Logo banner -->
         <ImageView
             android:layout_gravity="start"
             android:src="@drawable/murkoff_banner"
@@ -21,6 +22,7 @@
             android:layout_height="60dp"
             android:contentDescription="Murkoff Banner" />
 
+        <!-- Text area -->
         <LinearLayout
             android:orientation="vertical"
             android:layout_weight="1"
@@ -42,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="25dp"
                 android:drawableStart="@drawable/ic_sunny_cloudy"
-                android:drawablePadding="10dp"
+                android:drawablePadding="1dp"
                 android:paddingVertical="5dp"
                 android:text="29 độ C"
                 android:textColor="@color/textColorBlack"
@@ -50,7 +52,22 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-    </LinearLayout><!-- UPPER BANNER UI-->
+        <!-- MurkOff Care Chatbot -->
+        <ImageView
+            android:id="@+id/iconChatbot"
+            android:src="@drawable/murkoff_circle_logo"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_gravity="center"
+            android:contentDescription="Chatbot Icon"
+            android:padding="4dp"
+            android:layout_marginEnd="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground" />
+
+    </LinearLayout>
+<!-- UPPER BANNER UI-->
 
 
     <!-- SPECIALITY SEARCH BAR -->

@@ -8,6 +8,7 @@
     import android.view.View;
     import android.view.ViewGroup;
     import android.widget.EditText;
+    import android.widget.ImageView;
     import android.widget.TextView;
 
     import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@
     import androidx.recyclerview.widget.LinearLayoutManager;
     import androidx.recyclerview.widget.RecyclerView;
 
+    import com.example.dacn_murkoff_care_android.Chatbot.ChatbotActivity;
     import com.example.dacn_murkoff_care_android.Configuration.Constant;
     import com.example.dacn_murkoff_care_android.Configuration.HTTPRequest;
     import com.example.dacn_murkoff_care_android.Configuration.HTTPService;
@@ -65,6 +67,7 @@
         private Context context;
         private RecyclerView recyclerViewButton;
 
+        private ImageView iconChatbot;
         private TextView txtDate;
         private TextView txtWeather;
 
@@ -104,6 +107,7 @@
             txtReadMoreSpeciality = view.findViewById(R.id.txtReadMoreSpeciality);
             txtReadMoreDoctor = view.findViewById(R.id.txtReadMoreDoctor);
 
+            iconChatbot = view.findViewById(R.id.iconChatbot);
             txtWeather = view.findViewById(R.id.txtWeather);
             txtDate = view.findViewById(R.id.txtDate);
 
@@ -207,6 +211,14 @@
                 intent.putExtra("filterKey", filterKey );
                 startActivity(intent);
             });
+
+            /*IMAGEVIEW MURKOFF CARE CHATBOT  */
+            iconChatbot.setOnClickListener(view -> {
+                //showChatbotDialog();
+                Intent intent = new Intent(context, ChatbotActivity.class);
+                startActivity(intent);
+            });
+
         }
 
 

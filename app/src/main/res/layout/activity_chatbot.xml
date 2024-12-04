@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".Chatbot.ChatbotActivity">
+
+    <!-- Header Layout: Back Button and Logo -->
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="@string/image" />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="start"
+            android:contentDescription="@string/image"
+            android:src="@drawable/murkoff_banner" />
+
+    </LinearLayout>
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@id/bottom_layout"
+        android:layout_below="@id/header_layout"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp"
+        android:scrollbars="vertical" />
+
+    <!-- Welcome Text -->
+    <TextView
+        android:id="@+id/welcome_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Welcome to MurkOff Chat\nTry it out now"
+        android:gravity="center"
+        android:textSize="28sp"/>
+
+    <!-- Bottom Layout: Message Input and Send Button -->
+    <RelativeLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="8dp"
+        android:background="@color/white"
+        android:elevation="4dp">
+
+        <EditText
+            android:id="@+id/message_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_toStartOf="@id/send_btn"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_cornor"
+            android:hint="Write here"
+            android:paddingHorizontal="16dp"
+            android:textColor="@color/black"
+            android:imeOptions="actionSend"
+            android:inputType="text" />
+
+        <ImageButton
+            android:id="@+id/send_btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_send_24" />
+    </RelativeLayout>
+
+</RelativeLayout>

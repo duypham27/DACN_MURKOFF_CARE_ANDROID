@@ -58,9 +58,6 @@
             android:textSize="12sp"
             tools:ignore="RtlSymmetry" />
 
-
-
-
     </LinearLayout><!-- end FILTER SPINNER & SEARCH BAR -->
 
     <!--RECYCLER VIEW-->
