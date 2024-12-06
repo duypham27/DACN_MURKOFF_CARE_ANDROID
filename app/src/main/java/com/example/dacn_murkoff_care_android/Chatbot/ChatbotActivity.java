@@ -40,7 +40,6 @@ public class ChatbotActivity extends AppCompatActivity {
     List<MessageChat> messageChatList;
     MessageAdapter messageAdapter;
 
-    public static final MediaType JSON = MediaType.get("application/json");
     OkHttpClient client = new OkHttpClient();
 
     @Override
@@ -96,58 +95,78 @@ public class ChatbotActivity extends AppCompatActivity {
         addToChat(response, MessageChat.SENT_BY_BOT);
     }
 
+
+    /**NOTE:
+     * Chatbot API by https://www.coze.com/
+     * Before active to chat you need [id] and [token] chatbot
+     * Attention: every chatbot limit at 30 token
+     **/
     void callAPI(String question) {
+        // Thêm tin nhắn "Typing..." vào giao diện
         messageChatList.add(new MessageChat("Typing...", MessageChat.SENT_BY_BOT));
+        messageAdapter.notifyDataSetChanged();
+        recyclerView.smoothScrollToPosition(messageAdapter.getItemCount());
 
-        JSONObject jsonBody = new JSONObject();
-        try {
-            JSONArray messages = new JSONArray();
-            messages.put(new JSONObject().put("role", "user").put("content", question));
-            jsonBody.put("messages", messages);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        // Tạo JSON payload hợp lệ
+        String jsonPayload = "{"
+                + "\"conversation_id\": \"123\","
+                + "\"bot_id\": \"7445222212816224263\","
+                + "\"user\": \"29032201862555\","
+                + "\"query\": \"" + question + "\","
+                + "\"stream\": false"
+                + "}";
 
-        RequestBody body = RequestBody.create(jsonBody.toString(), JSON);
+        // Tạo RequestBody
+        RequestBody body = RequestBody.create(
+                jsonPayload, MediaType.parse("application/json"));
+
+        // Tạo Request
         Request request = new Request.Builder()
-                .url("https://api.coze.com/v3/chat?conversation_id=7444455352772870162")
-                .header("Authorization", "Bearer pat_7SwVDo3Vkqh9RniI5FVIUrmOp0j0FUJUiUVokwMpII5ICrJvXpvzGYxBEzfDvcld")
+                .url("https://api.coze.com/open_api/v2/chat")
+                .header("Authorization", "Bearer pat_N05vNsB02JPWL2gPTu1DSGX82BO76zru3QKUUrGR58V2IvvqgT4D23BKhvou0K81")
                 .post(body)
                 .build();
 
+        // Gửi yêu cầu HTTP
+        OkHttpClient client = new OkHttpClient();
         client.newCall(request).enqueue(new Callback() {
             @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                addResponse("Failed to load response: " + e.getMessage());
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+                runOnUiThread(() -> addResponse("Đã xảy ra lỗi. Vui lòng thử lại sau!"));
             }
 
             @Override
-            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                if (response.isSuccessful() && response.body() != null) {
-                    String responseBody = response.body().string();
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
                     try {
+                        // Parse JSON response
+                        String responseBody = response.body().string();
+                        System.out.println("API Response: " + responseBody);
+
                         JSONObject jsonObject = new JSONObject(responseBody);
-                        if (jsonObject.has("choices")) {
-                            JSONArray choices = jsonObject.getJSONArray("choices");
-                            String result = choices.getJSONObject(0).getJSONObject("message").getString("content");
-                            addResponse(result.trim());
-                        } else if (jsonObject.has("error")) {
-                            addResponse("API Error: " + jsonObject.getString("error"));
+
+                        // Lấy mảng messages
+                        JSONArray messages = jsonObject.getJSONArray("messages");
+
+                        // Lấy nội dung từ phần tử đầu tiên
+                        if (messages.length() > 0) {
+                            String content = messages.getJSONObject(0).getString("content");
+
+                            // Thêm phản hồi từ bot vào giao diện
+                            runOnUiThread(() -> addResponse(content));
                         } else {
-                            addResponse("Unexpected response format.");
+                            runOnUiThread(() -> addResponse("Phản hồi không chứa nội dung."));
                         }
                     } catch (JSONException e) {
-                        addResponse("Error parsing response: " + e.getMessage());
+                        e.printStackTrace();
+                        runOnUiThread(() -> addResponse("Đã xảy ra lỗi khi xử lý phản hồi: " + e.getMessage()));
                     }
                 } else {
-                    addResponse("Response error: " + response.code() + " " + response.message());
+                    runOnUiThread(() -> addResponse("Yêu cầu không thành công: " + response.code()));
                 }
             }
         });
     }
+
 }
-
-
-
-//7444455352772870162
-//pat_7SwVDo3Vkqh9RniI5FVIUrmOp0j0FUJUiUVokwMpII5ICrJvXpvzGYxBEzfDvcld

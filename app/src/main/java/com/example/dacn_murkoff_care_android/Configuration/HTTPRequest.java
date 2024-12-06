@@ -56,7 +56,7 @@ public interface HTTPRequest {
 
     /** LOGIN WITH GOOGLE ACCOUNT **/
     @FormUrlEncoded
-    @POST("api/login/google")
+    @POST("login/google")
     Call<Login> loginWithGoogle(@Field("email") String email, @Field("password") String password, @Field("type") String type);
 
     /** LOGIN WITH GITHUB ACCOUNT **/
@@ -68,12 +68,12 @@ public interface HTTPRequest {
 
     /** PATIENT PROFILE - GET - READ PERSONAL INFORMATION **/
     /* GET */
-    @GET("api/patient/profile")
+    @GET("patient/profile")
     Call<PatientProfile> readPersonalInformation(@HeaderMap Map<String, String> headers);
 
     /* POST */
     @FormUrlEncoded
-    @POST("api/patient/profile")
+    @POST("patient/profile")
     Call<PatientProfileChangePersonalInformation> changePersonalInformation(@HeaderMap Map<String, String> header ,
                                                                             @Field("action") String action,
                                                                             @Field("name") String name,
@@ -82,7 +82,7 @@ public interface HTTPRequest {
                                                                             @Field("address") String address);
 
     @Multipart
-    @POST("api/patient/profile")
+    @POST("patient/profile")
     Call<PatientProfileChangeAvatar> changeAvatar(@Header("Authorization") String accessToken,
                                                   @Header("Type") String type,
                                                   @Part MultipartBody.Part file,
@@ -90,32 +90,32 @@ public interface HTTPRequest {
 
 
     /** SPECIALITY **/
-    @GET("api/specialities")
+    @GET("specialities")
     Call<SpecialityReadAll> specialityReadAll(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> parameters);
 
-    @GET("api/specialities/{id}")
+    @GET("specialities/{id}")
     Call<SpecialityReadByID> specialityReadByID(@HeaderMap Map<String, String> headers, @Path("id") String id);
 
     /** DOCTOR **/
-    @GET("api/doctors")
+    @GET("doctors")
     Call<DoctorReadAll> doctorReadAll(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> parameters);
 
-    @GET("api/doctors/{id}")
+    @GET("doctors/{id}")
     Call<DoctorReadByID> doctorReadByID(@HeaderMap Map<String, String> headers, @Path("id") String id);
 
 
     /** SERVICE **/
-    @GET("api/services")
+    @GET("services")
     Call<ServiceReadAll> serviceReadAll(@HeaderMap Map<String, String> headers, @QueryMap Map<String, String> parameters);
 
-    @GET("api/services/{id}")
+    @GET("services/{id}")
     Call<ServiceReadByID> serviceReadByID(@HeaderMap Map<String, String> headers, @Path("id") String id);
 
 
 
     /** BOOKING **/
     @FormUrlEncoded
-    @POST("api/patient/booking")
+    @POST("patient/booking")
     Call<BookingCreate> bookingCreate(@HeaderMap Map<String, String> headers,
                                       @Field("doctor_id") String doctorId,
                                       @Field("service_id") String serviceId,
@@ -129,77 +129,77 @@ public interface HTTPRequest {
                                       @Field("appointment_time") String appointmentTime,
                                       @Field("appointment_date") String appointmentDate);
 
-    @GET("api/patient/booking/{id}")
+    @GET("patient/booking/{id}")
     Call<BookingReadByID> bookingReadByID(@HeaderMap Map <String, String> header, @Path("id") String bookingId);
 
-    @DELETE("api/patient/booking/{id}")
+    @DELETE("patient/booking/{id}")
     Call<BookingCancel> bookingCancel(@HeaderMap Map <String, String> header, @Path("id") String bookingId);
 
-    @GET("api/patient/booking")
+    @GET("patient/booking")
     Call<BookingReadAll> bookingReadAll(@HeaderMap Map<String, String> header, @HeaderMap Map<String, String> parameters);
 
 
     /** BOOKING PHOTO **/
-    @GET("api/booking/photos/{id}")
+    @GET("booking/photos/{id}")
     Call<BookingPhotoReadAll> bookingPhotoReadAll(@HeaderMap Map<String, String> headers, @Path("id") String id);
 
 
     @Multipart
-    @POST("api/booking/upload-photo")
+    @POST("booking/upload-photo")
     Call<BookingPhotoUpload> bookingPhotoUpload(@Header("Authorization") String accessToken,
                                                 @Header("Type") String type,
                                                 @Part("booking_id") RequestBody bookingId,
                                                 @Part MultipartBody.Part file);
 
 
-    @DELETE("api/booking/photo/{id}")
+    @DELETE("booking/photo/{id}")
     Call<BookingPhotoDelete> bookingPhotoDelete(@HeaderMap Map<String, String> header, @Path("id") int id);
 
 
     /** APPOINTMENTS **/
-    @GET("api/patient/appointments")
+    @GET("patient/appointments")
     Call<AppointmentReadAll> appointmentReadAll(@HeaderMap Map <String, String> header, @QueryMap Map<String, String> parameters);
 
 
-    @GET("api/patient/appointments/{id}")
+    @GET("patient/appointments/{id}")
     Call<AppointmentReadByID> appointmentReadByID(@HeaderMap Map <String, String> header, @Path("id") String appointmentId);
 
 
 
     /** NOTIFICATION **/
-    @GET("api/patient/notifications")
+    @GET("patient/notifications")
     Call<NotificationReadAll> notificationReadAll(@HeaderMap Map<String, String> header);
 
 
-    @POST("api/patient/notifications/mark-as-read/{id}")
+    @POST("patient/notifications/mark-as-read/{id}")
     Call<NotificationMarkAsRead> notificationMarkAsRead(@HeaderMap Map<String, String> header, @Path("id") String notificationId);
 
 
-    @POST("api/patient/notifications")
+    @POST("patient/notifications")
     Call<NotificationMarkAllAsRead> notificationMarkAllAsRead(@HeaderMap Map <String, String> header);
 
 
     @FormUrlEncoded
-    @PUT("api/patient/notifications")
+    @PUT("patient/notifications")
     Call<NotificationCreate> notificationCreate(@HeaderMap Map <String, String> header,
                                                 @Field("message") String message,
                                                 @Field("record_id") String recordId,
                                                 @Field("record_type") String recordType);
 
     /** QUEUE **/
-    @GET("api/appointment-queue")
+    @GET("appointment-queue")
     Call<AppointmentQueue> appointmentQueue(@HeaderMap Map <String, String> header, @QueryMap Map<String, String> parameters);
 
 
     /** RECORD **/
-    @GET("api/patient/appointments/records/{id}")
+    @GET("patient/appointments/records/{id}")
     Call<RecordReadByID> recordReadById(@HeaderMap Map <String, String> header, @Path("id") String recordId);
 
     /** TREATMENT **/
-    @GET("api/patient/treatments/{id}")
+    @GET("patient/treatments/{id}")
     Call<TreatmentReadAll> treatmentReadAll(@HeaderMap Map <String, String> header, @Path("id") String appointmentId);
 
-    @GET("api/patient/treatment/{id}")
+    @GET("patient/treatment/{id}")
     Call<TreatmentReadByID> treatmentReadByID(@HeaderMap Map <String, String> header, @Path("id") String treatmentId);
 
 
