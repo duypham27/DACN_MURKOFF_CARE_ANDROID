@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.dacn_murkoff_care_android.Helper.Dialog;
 import com.example.dacn_murkoff_care_android.Helper.GlobalVariable;
 import com.example.dacn_murkoff_care_android.Helper.LoadingScreen;
+import com.example.dacn_murkoff_care_android.Helper.Tooltip;
 import com.example.dacn_murkoff_care_android.Model.Appointment;
 import com.example.dacn_murkoff_care_android.R;
 import com.example.dacn_murkoff_care_android.RecyclerView.Appointment2RecyclerView;
@@ -57,6 +58,13 @@ public class AppointmentHistoryActivity extends AppCompatActivity {
         header = globalVariable.getHeaders();
         dialog = new Dialog(this);
         loadingScreen = new LoadingScreen(this);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Tooltip.setLocale(this, sharedPreferences);
     }
 
 

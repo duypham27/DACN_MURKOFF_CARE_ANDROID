@@ -15,7 +15,7 @@ import com.example.dacn_murkoff_care_android.R;
 
 public class TreatmentPageActivity extends AppCompatActivity {
 
-    private final String TAG = "Treatment_Page_sActivity";
+    private final String TAG = "Treatment_Page_Activity";
     private SharedPreferences sharedPreferences;
 
     private ImageButton btnBack;

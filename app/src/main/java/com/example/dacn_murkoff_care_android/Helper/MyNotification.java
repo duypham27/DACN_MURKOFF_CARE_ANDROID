@@ -89,6 +89,7 @@ public class MyNotification extends android.app.Notification {
     public void show()
     {
         NotificationCompat.Builder builder = this.builder;
+        /** NEED TURN ON**/
         //notificationManager.notify(notificationID, builder.build());
     }
 }

@@ -77,6 +77,7 @@
             View view = inflater.inflate(R.layout.fragment_home_page, container, false);
 
             setupComponent(view);
+            /** NEED TURN ON **/
             //setupViewModel();
 
             setupEvent();

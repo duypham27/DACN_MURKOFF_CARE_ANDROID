@@ -95,7 +95,7 @@ public class AppointmentPageService extends IntentService {
             Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                     .setContentTitle("")
                     .setContentText("").build();
-
+            /** NEED FIX **/
             startForeground(1, notification);
         }
 

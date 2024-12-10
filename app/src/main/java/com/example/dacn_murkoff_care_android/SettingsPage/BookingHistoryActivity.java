@@ -22,7 +22,7 @@ import java.util.Map;
 
 public class BookingHistoryActivity extends AppCompatActivity {
 
-    private final String TAG = "Booking History Activity";
+    private final String TAG = "Booking_History_Activity";
     private ImageButton btnBack;
     private RecyclerView bookingRecyclerView;
 

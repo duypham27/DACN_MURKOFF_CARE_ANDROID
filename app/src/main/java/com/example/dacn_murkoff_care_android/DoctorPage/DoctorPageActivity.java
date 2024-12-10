@@ -61,6 +61,9 @@ public class DoctorPageActivity extends AppCompatActivity {
     }
 
 
+    /** NEED ON RESUME FUNC **/
+
+
     /** SETUP COMPONENT **/
     private void setupComponent() {
         doctorId = getIntent().getStringExtra("doctorId");

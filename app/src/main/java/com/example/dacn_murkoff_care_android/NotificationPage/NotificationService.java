@@ -68,6 +68,7 @@ public class NotificationService extends IntentService {
                     .setSmallIcon(R.drawable.murkoff_logo)
                     .build();
 
+            /** NEED FIX **/
             startForeground(1, notification);
         }
 

@@ -6,16 +6,16 @@
     <color name="colorTextSupport">#8D8F97</color>
 
     <!--TEXT-->
-    <color name="textColorBlack">#FF000000</color>
-    <color name="textColorWhite">#FFFFFFFF</color>
-    <color name="colorTextDialog">#182864</color>
+    <color name="textColorWhite">#8D8F97</color>
+    <color name="textColorBlack">@color/white</color>
+    <color name="colorTextDialog">@color/white</color>
+
+    <color name="colorInputBackground">#515155</color>
 
     <!-- THEME & BACKGROUND -->
-    <color name="colorInputBackground">#ECEEF0</color>
-    <color name="colorThemeBlueNavy">#1D3A70</color>
     <color name="colorThemeBlue">#2196F3</color>
-    <color name="colorTheme">#fe001a</color>
-    <color name="colorBackground">@color/white</color>
+    <color name="colorTheme">#2196F3</color>
+    <color name="colorBackground">#2D313D</color>
 
     <color name="colorTransparent">#00000000</color>
 
@@ -31,8 +31,7 @@
     <color name="colorButtomNavigationMenuEnable">#8D8F97</color>
 
     <!-- DIALOG BACKGROUND -->
-    <color name="colorIconBackground">#F9FAFB</color>
-
+    <color name="colorIconBackground">#515155</color>
     <color name="colorSeparator">#e6e6e6</color>
 
     <color name="colorBackgroundSettingAvatar">#F9FAFB</color>

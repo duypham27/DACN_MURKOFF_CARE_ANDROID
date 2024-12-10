@@ -30,6 +30,7 @@ import com.example.dacn_murkoff_care_android.RecyclerView.SpecialityRecyclerView
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class SearchPageActivity extends AppCompatActivity {
 
@@ -63,6 +64,30 @@ public class SearchPageActivity extends AppCompatActivity {
         setupComponent();
         setupFilterSpinner();
 
+        /*this block of code below - it handles event click on "READ MORE" button from HomepageActivity*/
+        if(getIntent().getStringExtra("filterKey") != null)
+        {
+            filterKey = getIntent().getStringExtra("filterKey");
+
+            String service = this.getString(R.string.service);
+            String speciality = this.getString(R.string.speciality);
+            String doctor = this.getString(R.string.doctor);
+
+            int position = 0;
+            if(Objects.equals(filterKey, service))
+            {
+                // do nothing
+            }
+            else if(Objects.equals(filterKey, speciality))
+            {
+                position = 1;
+            }
+            else
+            {
+                position = 2;
+            }
+            sprFilter.setSelection(position);
+        }
 
         setupViewModel();
         setupEvent();

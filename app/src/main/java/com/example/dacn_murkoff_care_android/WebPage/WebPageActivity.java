@@ -1,5 +1,6 @@
 package com.example.dacn_murkoff_care_android.WebPage;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import com.example.dacn_murkoff_care_android.R;
 
 public class WebPageActivity extends AppCompatActivity {
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
